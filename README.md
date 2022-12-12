@@ -43,6 +43,13 @@
     ```
 
 ## API Reference
+
+### Test connection to MongoDB: 
+Open http://localhost:5000/test in your browser. It should show 
+```
+[{"_id":"6396c9322263b0df338c472e","test":"Programming Integration Project"}]
+```
+
 TODO
 
 ## Database
