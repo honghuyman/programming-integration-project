@@ -47,7 +47,7 @@
 ### Test connection to MongoDB: 
 Open http://localhost:5000/test in your browser. It should show 
 ```
-[{"_id":"6396c9322263b0df338c472e","test":"Programming Integration Project"}]
+[{"_id":"63ad48d817be677c018f2e97","test":"Programming Integration Project","__v":0}]
 ```
 
 TODO
