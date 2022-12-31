@@ -46,14 +46,14 @@
 
 ### Login
 ```javascript
-let data = { username: "test", password: "test" };
+let data = { username: "example", password: "example" };
 
 fetch("http://localhost:5000/login", {
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
 }).then(response => response.json())
-  .then(data => console.log(data.message, data.user));
+  .then(data => console.log(data.message, '\n', data.user));
   // data.message is one of the following: 
   // "SUCCESS", "WRONG PASSWORD", "NOT REGISTERED"
 ```
