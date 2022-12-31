@@ -1,14 +1,12 @@
 let mongoose = require('mongoose')
 
 let userSchema = new mongoose.Schema({
-    user_ID: String,
     username: String,
     password: String,
     account_balance: Number
 })
 
 let projectSchema = new mongoose.Schema({
-    project_ID: String,
     project_name: String,
     reality_money: Number,
     target: Number,
@@ -31,7 +29,6 @@ let transactionSchema = new mongoose.Schema({
 })
 
 let categorySchema = new mongoose.Schema({
-    category_ID: String,
     name: String,
     type: String,
 })
