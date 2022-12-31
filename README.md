@@ -44,13 +44,45 @@
 
 ## API Reference
 
-### Test connection to MongoDB: 
-Open http://localhost:5000/test in your browser. It should show 
-```
-[{"_id":"63ad48d817be677c018f2e97","test":"Programming Integration Project","__v":0}]
+### Login
+```javascript
+let data = { username: "test", password: "test" };
+
+fetch("http://localhost:5000/login", {
+  method: "POST",
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data)
+}).then(response => response.json())
+  .then(data => console.log(data.message, data.user));
+  // data.message is one of the following: 
+  // "SUCCESS", "WRONG PASSWORD", "NOT REGISTERED"
 ```
 
-TODO
+If login successful, `data.user` will contain user information, otherwise it is `undefined`.
+```
+ {
+  _id: '63b039df07258122b58d3b2a',
+  username: 'example',
+  password: 'example',
+  account_balance: 0,
+  __v: 0
+}
+```
+
+### Register
+```javascript
+let data = { username: "example", password: "example" };
+
+fetch("http://localhost:5000/register", {
+  method: "POST",
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data)
+}).then(response => response.json())
+  .then(data => console.log(data.message));
+  // data.message is one of the following: 
+  // "SUCCESS", "ALREADY EXIST"
+```
+
 
 ## Database
 TODO

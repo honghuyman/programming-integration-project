@@ -10,9 +10,9 @@ app.use(express.json());
 // get driver connection
 const dbo = require("./db/conn");
 
-// test
-app.use(require("./routes/test"));
- 
+// api
+app.use(require("./routes/user"));
+
 app.listen(port, () => {
   // perform a database connection when server starts
   dbo.connectToServer();
