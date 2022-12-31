@@ -43,44 +43,100 @@
     ```
 
 ## API Reference
+Usage examples at [`/server/api-example/`](./server/api-example/)
 
-### Login
+### Authentication
+
+#### Login
 ```javascript
-let data = { username: "example", password: "example" };
-
-fetch("http://localhost:5000/login", {
-  method: "POST",
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data)
-}).then(response => response.json())
-  .then(data => console.log(data.message, '\n', data.user));
-  // data.message is one of the following: 
-  // "SUCCESS", "WRONG PASSWORD", "NOT REGISTERED"
-```
-
-If login successful, `data.user` will contain user information, otherwise it is `undefined`.
-```
- {
-  _id: '63b039df07258122b58d3b2a',
-  username: 'example',
-  password: 'example',
-  account_balance: 0,
-  __v: 0
+POST "http://localhost:5000/login"
+REQUEST { username: String, password: String }
+RESPONSE { 
+    message: String
+    user:  {
+        _id: String,
+        account_balance: Number,
+    }
 }
 ```
-
-### Register
+`message` is one of the following:
+`"SUCCESS", "WRONG PASSWORD", "NOT REGISTERED"`.
+If login successful, `user` will contain user information, otherwise it is `undefined`.
+#### Register 
 ```javascript
-let data = { username: "example", password: "example" };
+POST "http://localhost:5000/register"
+REQUEST { username: String, password: String }
+RESPONSE { message: String }
+```
+`message` is one of the following:
+`"SUCCESS", "ALREADY EXIST"`
 
-fetch("http://localhost:5000/register", {
-  method: "POST",
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data)
-}).then(response => response.json())
-  .then(data => console.log(data.message));
-  // data.message is one of the following: 
-  // "SUCCESS", "ALREADY EXIST"
+### For Transactions
+
+#### Get all categories
+```javascript
+GET "http://localhost:5000/all-categories"
+RESPONSE [
+    {
+        _id: String, 
+        name: String, 
+        type: String, 
+    }
+]
+```
+
+### For Projects
+#### Get all projects of user
+```javascript
+GET "http://localhost:5000/all-projects/<username>"
+RESPONSE [
+    {
+        _id: String,
+        project_name: String,
+        reality_money: Number,
+        target: Number,
+        start_date: Date,
+        end_date: Date,
+        privilege: String
+    }
+]
+```
+
+#### Add a new project
+```javascript
+POST "http://localhost:5000/new-project"
+REQUEST {
+    project_name: String,
+    target: Number,
+    start_date: Date,
+    end_date: Date,
+    manager_id: String
+}
+RESPONSE {
+    message: "SUCCESS"
+}
+```
+Note: Put `_id` you get from login to `manager_id`
+
+#### Find users (use this to get user_ID to add members)
+```javascript
+GET "http://localhost:5000/find-users/<search-string>"
+RESPONSE [
+    {
+        _id: String
+        username: String
+    }
+]
+```
+This will return all users whose username contains the search string. 
+
+#### Add a member to project
+```javascript
+POST "http://localhost:5000/add-member"
+REQUEST {user_ID: String, project_ID: String}
+RESPONSE {
+    message: "SUCCESS"
+} 
 ```
 
 

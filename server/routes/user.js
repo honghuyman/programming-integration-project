@@ -8,7 +8,7 @@ userRoutes.post("/login", (req, res) => {
     User.findOne({ username: username }, (err, user) => {
         if (user) {
             if (password === user.password) {
-                res.send({ message: "SUCCESS", user: user })
+                res.send({ message: "SUCCESS", user: ({_id: user._id, account_balance: user.account_balance}) })
             } else {
                 res.send({ message: "WRONG PASSWORD" })
             }
@@ -25,7 +25,7 @@ userRoutes.post("/register", (req, res) => {
         if (user) {
             res.send({ message: "ALREADY EXIST" })
         } else {
-            const user = new User({ username, password, account_balance: 0})
+            const user = new User({ username, password, account_balance: 0 })
             user.save(err => {
                 if (err) {
                     res.send(err)
@@ -36,5 +36,14 @@ userRoutes.post("/register", (req, res) => {
         }
     })
 })
+
+userRoutes.get("/find-users/:str", (req, res) => {
+    const { str } = req.params;
+    let query = User.find({ "username": { "$regex": str, "$options": "i" } }).select('username');
+    query.exec(function(err, users) {
+        if (err) res.send(error);
+        res.send(users);
+    })
+});
 
 module.exports = userRoutes;

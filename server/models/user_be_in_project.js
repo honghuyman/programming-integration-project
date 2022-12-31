@@ -1,4 +1,5 @@
 let mongoose = require('mongoose')
+let Schema = mongoose.Schema;
 
 let user_be_in_projectSchema = new mongoose.Schema({
     user_ID: {type: Schema.Types.ObjectId, ref: 'User'},
