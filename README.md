@@ -45,6 +45,8 @@
 ## API Reference
 Usage examples at [`/server/api-example/`](./server/api-example/)
 
+React + Fetch: [https://jasonwatmore.com/post/2020/02/01/react-fetch-http-post-request-examples](https://jasonwatmore.com/post/2020/02/01/react-fetch-http-post-request-examples)
+
 ### Authentication
 
 #### Login
@@ -152,7 +154,7 @@ RESPONSE {
 
 #### Get all members of project
 ```javascript
-GET "http://localhost:5000/all-members/project_ID"
+GET "http://localhost:5000/all-members/<project_ID>"
 RESPONSE [
     {
         _id: String,
