@@ -45,7 +45,9 @@
 ## API Reference
 Usage examples at [`/server/api-example/`](./server/api-example/)
 
-React + Fetch: [https://jasonwatmore.com/post/2020/02/01/react-fetch-http-post-request-examples](https://jasonwatmore.com/post/2020/02/01/react-fetch-http-post-request-examples)
+React + Fetch - HTTP GET: https://jasonwatmore.com/post/2020/01/27/react-fetch-http-get-request-examples
+
+React + Fetch - HTTP POST: https://jasonwatmore.com/post/2020/02/01/react-fetch-http-post-request-examples
 
 ### Authentication
 
