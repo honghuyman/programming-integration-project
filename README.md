@@ -117,6 +117,20 @@ RESPONSE {
     }
 ```
 
+#### Get all members of project
+```javascript
+GET "http://localhost:5000/all-members/<project_ID>"
+RESPONSE [
+    {
+        _id: String,
+        username: String,
+        privilege: String,
+        money: Number
+    }
+]
+```
+`privilege` is `"manager"` or `"member"` 
+
 #### Add a new project
 ```javascript
 POST "http://localhost:5000/new-project"
@@ -137,6 +151,31 @@ RESPONSE {
 }
 ```
 Note: Put `_id` you get from login to `manager_id` in request
+
+#### Update a project
+```javascript
+POST "http://localhost:5000/update-project"
+REQUEST {
+    _id: String
+    target: String,
+    start_date: String,
+    end_date: String
+}
+RESPONSE {
+    message: "SUCCESS"
+} 
+```
+
+#### Delete a project
+```javascript
+POST "http://localhost:5000/delete-project"
+REQUEST {
+    project_ID: String,
+}
+RESPONSE {
+    message: "SUCCESS"
+} 
+```
 
 #### Find users (use this to get user_ID to add members)
 ```javascript
@@ -159,6 +198,8 @@ RESPONSE {
 } 
 ```
 
+
+
 #### Add money to project
 ```javascript
 POST "http://localhost:5000/add-money-to-project"
@@ -172,20 +213,6 @@ RESPONSE {
 } 
 ```
 
-#### Get all members of project
-```javascript
-GET "http://localhost:5000/all-members/<project_ID>"
-RESPONSE [
-    {
-        _id: String,
-        username: String,
-        privilege: String,
-        money: Number
-    }
-]
-```
-`privilege` is `"manager"` or `"member"` 
-
 #### Delete a member
 ```javascript
 POST "http://localhost:5000/delete-member"
@@ -197,32 +224,6 @@ RESPONSE {
     message: "SUCCESS"
 } 
 ```
-
-#### Delete a project
-```javascript
-POST "http://localhost:5000/delete-project"
-REQUEST {
-    project_ID: String,
-}
-RESPONSE {
-    message: "SUCCESS"
-} 
-```
-
-#### Update a project
-```javascript
-POST "http://localhost:5000/update-project"
-REQUEST {
-    _id: String
-    target: String,
-    start_date: String,
-    end_date: String
-}
-RESPONSE {
-    message: "SUCCESS"
-} 
-```
-
 
 ## Database
 TODO
