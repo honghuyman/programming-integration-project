@@ -55,13 +55,12 @@ RESPONSE {
     message: String
     user:  {
         _id: String,
-        account_balance: Number,
     }
 }
 ```
 `message` is one of the following:
 `"SUCCESS", "WRONG PASSWORD", "NOT REGISTERED"`.
-If login successful, `user` will contain user information, otherwise it is `undefined`.
+If login successful, `user` will contain user ID, otherwise it is `undefined`.
 #### Register 
 ```javascript
 POST "http://localhost:5000/register"
@@ -96,8 +95,7 @@ RESPONSE [
         reality_money: Number,
         target: Number,
         start_date: Date,
-        end_date: Date,
-        privilege: String
+        end_date: Date
     }
 ]
 ```
@@ -123,7 +121,7 @@ Note: Put `_id` you get from login to `manager_id`
 GET "http://localhost:5000/find-users/<search-string>"
 RESPONSE [
     {
-        _id: String
+        _id: String,
         username: String
     }
 ]
@@ -134,6 +132,70 @@ This will return all users whose username contains the search string.
 ```javascript
 POST "http://localhost:5000/add-member"
 REQUEST {user_ID: String, project_ID: String}
+RESPONSE {
+    message: "SUCCESS"
+} 
+```
+
+#### Add money to project
+```javascript
+POST "http://localhost:5000/add-money-to-project"
+REQUEST {
+    user_ID: String,
+    project_ID: String,
+    money: Number
+}
+RESPONSE {
+    message: "SUCCESS"
+} 
+```
+
+#### Get all members of project
+```javascript
+GET "http://localhost:5000/all-members/project_ID"
+RESPONSE [
+    {
+        _id: String,
+        username: String,
+        privilege: String,
+        money: Number
+    }
+]
+```
+`privilege` is `"manager"` or `"member"` 
+
+#### Delete a member
+```javascript
+POST "http://localhost:5000/delete-member"
+REQUEST {
+    user_ID: String,
+    project_ID: String,
+}
+RESPONSE {
+    message: "SUCCESS"
+} 
+```
+
+#### Delete a project
+```javascript
+POST "http://localhost:5000/delete-project"
+REQUEST {
+    project_ID: String,
+}
+RESPONSE {
+    message: "SUCCESS"
+} 
+```
+
+#### Update a project
+```javascript
+POST "http://localhost:5000/delete-project"
+REQUEST {
+    _id: String
+    target: String,
+    start_date: String,
+    end_date: String
+}
 RESPONSE {
     message: "SUCCESS"
 } 

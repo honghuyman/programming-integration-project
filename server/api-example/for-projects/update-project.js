@@ -1,12 +1,11 @@
 let data = {
-    project_name: "example project 8",
-    target: 1000000,
+    _id: "63b10c6c86f228a6d179ffb7",
+    target: 9000000,
     start_date: Date(2023, 1, 1),
     end_date: Date(2023, 12, 31),
-    manager_id: "63b039df07258122b58d3b2a"
 };
 
-fetch("http://localhost:5000/new-project", {
+fetch("http://localhost:5000/update-project", {
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)

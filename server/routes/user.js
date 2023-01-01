@@ -8,7 +8,7 @@ userRoutes.post("/login", (req, res) => {
     User.findOne({ username: username }, (err, user) => {
         if (user) {
             if (password === user.password) {
-                res.send({ message: "SUCCESS", user: ({_id: user._id, account_balance: user.account_balance}) })
+                res.send({ message: "SUCCESS", user: ({ _id: user._id }) })
             } else {
                 res.send({ message: "WRONG PASSWORD" })
             }
@@ -40,9 +40,11 @@ userRoutes.post("/register", (req, res) => {
 userRoutes.get("/find-users/:str", (req, res) => {
     const { str } = req.params;
     let query = User.find({ "username": { "$regex": str, "$options": "i" } }).select('username');
-    query.exec(function(err, users) {
-        if (err) res.send(error);
-        res.send(users);
+    query.exec(function (err, users) {
+        if (err)
+            res.send(error);
+        else
+            res.send(users);
     })
 });
 
