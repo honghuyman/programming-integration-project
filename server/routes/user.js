@@ -42,7 +42,7 @@ userRoutes.get("/find-users/:str", (req, res) => {
     let query = User.find({ "username": { "$regex": str, "$options": "i" } }).select('username');
     query.exec(function (err, users) {
         if (err)
-            res.send(error);
+            res.send(err);
         else
             res.send(users);
     })

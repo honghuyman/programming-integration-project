@@ -193,7 +193,7 @@ RESPONSE {
 
 #### Update a project
 ```javascript
-POST "http://localhost:5000/delete-project"
+POST "http://localhost:5000/update-project"
 REQUEST {
     _id: String
     target: String,

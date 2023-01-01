@@ -39,7 +39,8 @@ projectRoutes.post("/new-project", (req, res) => {
     const user_be_in_project = new User_be_in_project({
         user_ID: manager_id,
         project_ID: project._id,
-        privilege: "manager"
+        privilege: "manager",
+        money: 0
     })
 
     project.save(err => {
