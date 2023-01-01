@@ -168,7 +168,7 @@ RESPONSE { message: "SUCCESS" }
 ### For Projects
 #### Get all projects of user
 ```javascript
-GET "http://localhost:5000/all-projects/<user_ID>"
+GET "http://localhost:5000/all-projects/<username>"
 RESPONSE [
     {
         _id: String,
