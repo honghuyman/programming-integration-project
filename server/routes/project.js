@@ -19,10 +19,15 @@ projectRoutes.route('/all-projects/:username').get((req, res) => {
         {
             $match: { username: username }
         }
-    ]).exec(function (err, projects) {
+    ]).exec(function (err, users) {
         if (err) return res.send(err);
-        if (projects.length === 0) return res.send({message: "USERNAME DOES NOT EXIST"})
-        let proj_ids = projects[0].user_be_in_projects.map((o => o.project_ID));
+        if (users.length === 0) return res.send({ message: "USERNAME DOES NOT EXIST" })
+        let proj_ids = users[0].user_be_in_projects.map((o => o.project_ID));
+        
+        // user has no projects
+        let mapped_ids = proj_ids.map(id => ({ _id: id }));
+        if (mapped_ids.length === 0) return res.json([]);
+        
         Project.find({ $or: proj_ids.map(id => ({ _id: id })) })
             .then(projects => {
                 res.json(projects);
@@ -31,9 +36,9 @@ projectRoutes.route('/all-projects/:username').get((req, res) => {
     });;
 });
 
-projectRoutes.get('/project/:project_ID', function(req, res) {
-    const {project_ID} = req.params;
-    Project.findById(project_ID, function(err, record) {
+projectRoutes.get('/project/:project_ID', function (req, res) {
+    const { project_ID } = req.params;
+    Project.findById(project_ID, function (err, record) {
         if (err) return res.send(err);
         res.json(record);
     })
@@ -52,7 +57,7 @@ projectRoutes.post("/new-project", (req, res) => {
         money: 0
     })
 
-    project.save((err, record)=> {
+    project.save((err, record) => {
         if (err) return res.send(err)
         user_be_in_project.save(err => {
             if (err) return res.send(err)
@@ -148,9 +153,9 @@ projectRoutes.post("/delete-project", function (req, res) {
 projectRoutes.post("/update-project", function (req, res) {
     console.log("Update project: ", req.body);
     const { _id, target, start_date, end_date } = req.body;
-    Project.findOneAndUpdate({_id}, {target, start_date, end_date}).exec(function(err){
+    Project.findOneAndUpdate({ _id }, { target, start_date, end_date }).exec(function (err) {
         if (err) return res.send(err)
-        res.send({message: "SUCCESS"})
+        res.send({ message: "SUCCESS" })
     })
 })
 
