@@ -11,4 +11,4 @@ fetch("http://localhost:5000/new-project", {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
 }).then(response => response.json())
-  .then(data => console.log(data.message));
+  .then(data => console.log(data));

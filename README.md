@@ -115,10 +115,15 @@ REQUEST {
     manager_id: String
 }
 RESPONSE {
-    message: "SUCCESS"
+    _id: String,
+    project_name: String,
+    reality_money: Number,
+    target: Number,
+    start_date: Date,
+    end_date: Date
 }
 ```
-Note: Put `_id` you get from login to `manager_id`
+Note: Put `_id` you get from login to `manager_id` in request
 
 #### Find users (use this to get user_ID to add members)
 ```javascript

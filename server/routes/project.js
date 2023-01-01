@@ -43,11 +43,11 @@ projectRoutes.post("/new-project", (req, res) => {
         money: 0
     })
 
-    project.save(err => {
+    project.save((err, record)=> {
         if (err) return res.send(err)
         user_be_in_project.save(err => {
             if (err) return res.send(err)
-            res.send({ message: "SUCCESS" })
+            res.send(record)
         })
     })
 
