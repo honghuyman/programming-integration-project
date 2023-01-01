@@ -158,7 +158,7 @@ RESPONSE { message: "SUCCESS" }
 #### Delete transaction
 
 ```javascript
-POST "http://localhost:5000/add-transaction"
+POST "http://localhost:5000/delete-transaction"
 REQUEST {
     transaction_ID: String
 }
