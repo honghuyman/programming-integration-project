@@ -104,6 +104,19 @@ RESPONSE [
 ]
 ```
 
+#### Get project by Project_ID
+```javascript
+GET "http://localhost:5000/project/<project_ID>"
+RESPONSE {
+        _id: String,
+        project_name: String,
+        reality_money: Number,
+        target: Number,
+        start_date: Date,
+        end_date: Date
+    }
+```
+
 #### Add a new project
 ```javascript
 POST "http://localhost:5000/new-project"

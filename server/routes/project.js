@@ -30,6 +30,14 @@ projectRoutes.route('/all-projects/:username').get((req, res) => {
     });;
 });
 
+projectRoutes.get('/project/:project_ID', function(req, res) {
+    const {project_ID} = req.params;
+    Project.findById(project_ID, function(err, record) {
+        if (err) return res.send(err);
+        res.json(record);
+    })
+})
+
 
 projectRoutes.post("/new-project", (req, res) => {
     console.log("New Project: ", req.body)
@@ -144,6 +152,8 @@ projectRoutes.post("/update-project", function (req, res) {
         res.send({message: "SUCCESS"})
     })
 })
+
+
 
 
 module.exports = projectRoutes;
