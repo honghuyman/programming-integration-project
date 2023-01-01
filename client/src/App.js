@@ -1,8 +1,12 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
+// Style
 import 'bootstrap/dist/css/bootstrap.css';
 
-import SignUp from './components/signup';
+// Page
+import Login from './components/login'
+import Register from './components/register';
 
 function App()
 {
@@ -10,7 +14,8 @@ function App()
         <Router>
             <div className='App'>
                 <Routes>
-                    <Route path='/sign-up' element={<SignUp />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
                 </Routes>
             </div>
         </Router>
