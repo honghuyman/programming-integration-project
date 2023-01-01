@@ -21,6 +21,7 @@ projectRoutes.route('/all-projects/:username').get((req, res) => {
         }
     ]).exec(function (err, projects) {
         if (err) return res.send(err);
+        if (projects.length === 0) return res.send({message: "USERNAME DOES NOT EXIST"})
         let proj_ids = projects[0].user_be_in_projects.map((o => o.project_ID));
         Project.find({ $or: proj_ids.map(id => ({ _id: id })) })
             .then(projects => {
