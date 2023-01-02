@@ -146,7 +146,7 @@ RESPONSE { message: "SUCCESS" }
 ```javascript
 POST "http://localhost:5000/update-transaction"
 REQUEST {
-    user_ID: String,
+    transaction_ID: String,
     amount: Number,
     category_ID: String,
     note: String,

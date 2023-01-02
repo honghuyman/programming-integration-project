@@ -28,7 +28,7 @@ projectRoutes.route('/all-projects/:username').get((req, res) => {
         let mapped_ids = proj_ids.map(id => ({ _id: id }));
         if (mapped_ids.length === 0) return res.json([]);
         
-        Project.find({ $or: proj_ids.map(id => ({ _id: id })) })
+        Project.find({ $or: mapped_ids })
             .then(projects => {
                 res.json(projects);
             })
