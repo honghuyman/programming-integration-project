@@ -6,7 +6,7 @@ let data = {
     manager_id: "63b039df07258122b58d3b2a"
 };
 
-fetch("http://localhost:5000/new-project", {
+fetch("http://localhost:3005/new-project", {
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
