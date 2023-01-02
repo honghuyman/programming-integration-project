@@ -4,7 +4,7 @@ let data = {
     money: 500
 };
 
-fetch("http://localhost:5000/add-money-to-project", {
+fetch("http://localhost:3005/add-money-to-project", {
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
