@@ -1,0 +1,200 @@
+
+:root {
+    --slide_width: 8%;
+    --icon-size: 45px;
+    --page-height: 1000px;
+    --slide-bar-margin-top-bottom: 70px;
+    --slide-bar-padding: 10px;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  div.page-container {
+    overflow: hidden;
+    background-color: gainsboro;
+  }
+  
+  /* Slide bar */
+  div.slide-bar {
+    width: var(--slide_width);
+    height: 100%;
+    float:left;
+    border-color: gainsboro;
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  div.slide-bar div {
+    text-align: center;
+  }
+  
+  div.slide-bar div.icon {
+    margin-bottom: var(--slide-bar-margin-top-bottom);
+    padding-top: var(--slide-bar-padding);
+    cursor: pointer;
+  }
+  
+  div.slide-bar div.icon:hover {
+    background-color: gainsboro;
+  }
+  
+  div.slide-bar div.icon img {
+    height: var(--icon-size);
+  }
+  
+  div.slide-bar div.icon p {
+    padding-bottom: var(--slide-bar-padding);
+  }
+  
+  div.slide-bar div.icon.icon-menu {
+    margin-top: 0px;
+    padding-bottom: 10px;
+    padding-bottom: 12px;
+  }
+  
+  div.slide-bar div.icon.icon-trans,
+  div.slide-bar div.icon.icon-report {
+    margin-top: var(--slide-bar-margin-top-bottom);
+  }
+  
+  div.slide-bar div.icon.icon-project {
+    margin-bottom: var(--page-height);
+  }
+  
+  
+  /* Nav bar */
+  div.nav-bar {
+    width: calc(100% - var(--slide_width));
+    height: 80px;
+    float:left;
+    border-color: gainsboro;
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  div.nav-bar div.icon img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: var(--icon-size);
+  }
+  
+  div.icon-my-wallet {
+    float:left;
+    margin-left: 20px;
+  }
+  
+  div.my-wallet-text {
+    float:left;
+    margin-left: 10px;
+  }
+  
+  div.my-wallet-text p.wallet-label {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  
+  div.my-wallet-text p#wallet-balance {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  
+  div.right-btn {
+    float:right;
+    margin-right: 20px;
+    margin-top: 15px;
+    box-shadow: 4px 4px 8px #8888888b;
+  }
+  
+  div.right-btn button {
+    border-width: 0;
+    border-radius: 0;
+    color:rgb(255, 255, 255)
+  }
+  
+  div.right-btn .btn.add-trans {
+    background-color: #FFE601;
+    font-weight: bold;
+  }
+  
+  div.right-btn .btn.add-trans:hover {
+    background-color:aquamarine;
+    font-weight: bold;
+  }
+  
+  div.right-btn .btn.project {
+    background-color: #457cff;
+    font-weight: bold;
+  }
+  
+  div.right-btn .btn.project:hover {
+    background-color:aquamarine;
+    font-weight: bold;
+  }
+  
+  /* Search bar */
+  div.search-bar {
+    width: calc(100% - var(--slide_width));
+    height: 125px;
+    float:left;
+    border-color: gainsboro;
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  div.search-bar .search-input {
+    height: 100px;
+    float:left;
+    border-color: rgb(190, 190, 190);
+    border-width: 2px;
+    border-style: solid;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    align-items: center;
+    width: 250px;
+  }
+  
+  div.search-bar .search-input p {
+    margin-bottom: 5px;
+  }
+  
+  div.search-bar .search-input input,
+  div.search-bar .search-input select {
+    border-color: aliceblue;
+    border-width: 3px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+    height: 40px;
+    width: 100%;
+  }
+  
+  div.search-bar .search-input select {
+    border-color:  rgb(204, 218, 228);
+  }
+  
+  div.search-bar .search-input.amount {
+    margin-left: 10%;
+  }
+  
+  div.search-bar div.icon {
+    height: 100%;
+    display:flex;
+  }
+  
+  div.search-bar div.icon img {
+    height: calc(1.25*var(--icon-size));
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20%;
+    cursor: pointer;
+  }
