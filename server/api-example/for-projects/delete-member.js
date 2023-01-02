@@ -3,7 +3,7 @@ let data = {
     project_ID: "63b057de3c3778e151e8108f",
 };
 
-fetch("http://localhost:5000/delete-member", {
+fetch("http://localhost:3005/delete-member", {
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)

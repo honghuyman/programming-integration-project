@@ -5,7 +5,7 @@ let data = {
     end_date: Date(2023, 12, 31),
 };
 
-fetch("http://localhost:5000/update-project", {
+fetch("http://localhost:3005/update-project", {
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)

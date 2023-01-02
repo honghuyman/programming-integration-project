@@ -53,7 +53,7 @@ React + Fetch - HTTP POST: https://jasonwatmore.com/post/2020/02/01/react-fetch-
 
 #### Login
 ```javascript
-POST "http://localhost:5000/login"
+POST "http://localhost:3005/login"
 REQUEST { username: String, password: String }
 RESPONSE { 
     message: String
@@ -67,7 +67,7 @@ RESPONSE {
 If login successful, `user` will contain user ID, otherwise it is `undefined`.
 #### Register 
 ```javascript
-POST "http://localhost:5000/register"
+POST "http://localhost:3005/register"
 REQUEST { username: String, password: String }
 RESPONSE { message: String }
 ```
@@ -78,7 +78,7 @@ RESPONSE { message: String }
 
 #### Get all categories
 ```javascript
-GET "http://localhost:5000/all-categories"
+GET "http://localhost:3005/all-categories"
 RESPONSE [
     {
         _id: String, 
@@ -91,7 +91,7 @@ RESPONSE [
 ### For Projects
 #### Get all projects of user
 ```javascript
-GET "http://localhost:5000/all-projects/<username>"
+GET "http://localhost:3005/all-projects/<username>"
 RESPONSE [
     {
         _id: String,
@@ -106,7 +106,7 @@ RESPONSE [
 
 #### Get project by Project_ID
 ```javascript
-GET "http://localhost:5000/project/<project_ID>"
+GET "http://localhost:3005/project/<project_ID>"
 RESPONSE {
         _id: String,
         project_name: String,
@@ -119,7 +119,7 @@ RESPONSE {
 
 #### Get all members of project
 ```javascript
-GET "http://localhost:5000/all-members/<project_ID>"
+GET "http://localhost:3005/all-members/<project_ID>"
 RESPONSE [
     {
         _id: String,
@@ -133,7 +133,7 @@ RESPONSE [
 
 #### Add a new project
 ```javascript
-POST "http://localhost:5000/new-project"
+POST "http://localhost:3005/new-project"
 REQUEST {
     project_name: String,
     target: Number,
@@ -154,7 +154,7 @@ Note: Put `_id` you get from login to `manager_id` in request
 
 #### Update a project
 ```javascript
-POST "http://localhost:5000/update-project"
+POST "http://localhost:3005/update-project"
 REQUEST {
     _id: String
     target: String,
@@ -168,7 +168,7 @@ RESPONSE {
 
 #### Delete a project
 ```javascript
-POST "http://localhost:5000/delete-project"
+POST "http://localhost:3005/delete-project"
 REQUEST {
     project_ID: String,
 }
@@ -179,7 +179,7 @@ RESPONSE {
 
 #### Find users (use this to get user_ID to add members)
 ```javascript
-GET "http://localhost:5000/find-users/<search-string>"
+GET "http://localhost:3005/find-users/<search-string>"
 RESPONSE [
     {
         _id: String,
@@ -191,7 +191,7 @@ This will return all users whose username contains the search string.
 
 #### Add a member to project
 ```javascript
-POST "http://localhost:5000/add-member"
+POST "http://localhost:3005/add-member"
 REQUEST {user_ID: String, project_ID: String}
 RESPONSE {
     message: "SUCCESS"
@@ -202,7 +202,7 @@ RESPONSE {
 
 #### Add money to project
 ```javascript
-POST "http://localhost:5000/add-money-to-project"
+POST "http://localhost:3005/add-money-to-project"
 REQUEST {
     user_ID: String,
     project_ID: String,
@@ -215,7 +215,7 @@ RESPONSE {
 
 #### Delete a member
 ```javascript
-POST "http://localhost:5000/delete-member"
+POST "http://localhost:3005/delete-member"
 REQUEST {
     user_ID: String,
     project_ID: String,
