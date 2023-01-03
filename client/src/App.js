@@ -9,6 +9,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import Project from './pages/project';
 import NewProject from './pages/new-project';
+import Transaction from './pages/transaction';
 
 function App()
 {
@@ -17,12 +18,13 @@ function App()
             <div className='App'>
                 <Routes>
                     {/* TODO Change to transaction */}
-                    <Route exact path="/" element={<Login />} />
+                    <Route exact path="/" element={<Transaction />} />
 
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/project' element={<Project />} />
                     <Route path='/project/new-project' element={<NewProject />} />
+                    <Route path='/transaction' element={<Transaction />} />
                 </Routes>
             </div>
         </Router>
