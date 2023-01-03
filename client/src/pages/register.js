@@ -58,7 +58,7 @@ export default class Register extends Component
                 style={{ backgroundImage: "url(bg-login.jpeg)", backgroundSize: `100% 100%` }}
             >
                 {/* Image */}
-                <div className="col-md-6 d-none d-sm-block">
+                <div className="col-md-6 d-none d-sm-block p-0">
                     <img src="login.png" alt="login" className="w-100" />
                 </div>
 
