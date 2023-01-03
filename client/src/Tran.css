@@ -1,200 +1,573 @@
 
 :root {
-    --slide_width: 8%;
-    --icon-size: 45px;
-    --page-height: 1000px;
-    --slide-bar-margin-top-bottom: 70px;
-    --slide-bar-padding: 10px;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
-  
-  div.page-container {
-    overflow: hidden;
-    background-color: gainsboro;
-  }
-  
-  /* Slide bar */
-  div.slide-bar {
-    width: var(--slide_width);
+  --bar-width: 6%;
+  --bar-height: 85px;
+  --search-box-height: 80px;
+  --center-box-padding: 8%;
+  --center-box-size: 550px;
+  --icon-size: 45px;
+  --category-icon-size: 35px;
+  --transaction-height: 70px;
+  --page-height: 2000px;
+  --slide-bar-margin-top-bottom: 70px;
+  --slide-bar-padding: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+div.page-container {
+  overflow: hidden;
+  background-color: gainsboro;
+}
+
+/* Slide bar */
+div.slide-bar {
+  width: var(--bar-width);
+  height: 100%;
+  float:left;
+  border-color: gainsboro;
+  border-width: 2px;
+  border-style: solid;
+  background-color: rgb(255, 255, 255);
+}
+
+div.slide-bar div {
+  text-align: center;
+}
+
+div.slide-bar div.icon {
+  margin-bottom: var(--slide-bar-margin-top-bottom);
+  padding-top: var(--slide-bar-padding);
+  cursor: pointer;
+}
+
+div.slide-bar div.icon:hover {
+  background-color: gainsboro;
+}
+
+div.slide-bar div.icon img {
+  height: var(--icon-size);
+}
+
+div.slide-bar div.icon p {
+  padding-bottom: var(--slide-bar-padding);
+}
+
+div.slide-bar div.icon.icon-menu {
+  margin-top: 0px;
+  padding-bottom: 10px;
+  padding-bottom: 12px;
+}
+
+div.slide-bar div.icon.icon-trans,
+div.slide-bar div.icon.icon-report {
+  margin-top: var(--slide-bar-margin-top-bottom);
+}
+
+div.slide-bar div.icon.icon-project {
+  margin-bottom: var(--page-height);
+}
+
+
+/* Nav bar */
+div.nav-bar {
+  width: calc(100% - var(--bar-width));
+  height: var(--bar-height);
+  float:left;
+  border-color: gainsboro;
+  border-width: 2px;
+  border-style: solid;
+  background-color: rgb(255, 255, 255);
+}
+
+div.nav-bar div.icon img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: var(--icon-size);
+}
+
+div.icon-my-wallet {
+  float:left;
+  margin-left: 20px;
+}
+
+div.my-wallet-text {
+  float:left;
+  margin-left: 10px;
+}
+
+div.my-wallet-text p.wallet-label {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+div.my-wallet-text p#wallet-balance {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+div.right-btn {
+  float:right;
+  margin-right: 20px;
+  margin-top: 15px;
+  box-shadow: 4px 4px 8px #8888888b;
+}
+
+div.right-btn button {
+  border-width: 0;
+  border-radius: 0;
+  color:rgb(255, 255, 255)
+}
+
+div.right-btn .btn.add-trans {
+  background-color: #FFE601;
+  color: black;
+  font-weight: bold;
+}
+
+div.right-btn .btn.add-trans:hover {
+  background-color:aquamarine;
+  font-weight: bold;
+}
+
+div.right-btn .btn.project {
+  background-color: #457cff;
+  font-weight: bold;
+}
+
+div.right-btn .btn.project:hover {
+  background-color:aquamarine;
+  font-weight: bold;
+}
+
+/* Search bar */
+div.search-bar {
+  width: calc(100% - var(--bar-width));
+  height: var(--bar-height);
+  float:left;
+  border-color: gainsboro;
+  border-width: 2px;
+  border-style: solid;
+  background-color: rgb(255, 255, 255);
+}
+
+div.search-bar .search-input {
+  height: var(--search-box-height);
+  float:left;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  align-items: center;
+  width: 200px;
+}
+
+div.search-bar .search-input p {
+  margin-bottom: 0;
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+div.search-bar .search-input input,
+div.search-bar .search-input select {
+  border-color: aliceblue;
+  border-width: 3px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 0;
+  margin-left: 10px;
+  font-size: 16px;
+  height: 40%;
+  width: 100%;
+}
+
+div.search-bar .search-input select {
+  border-color:  rgb(204, 218, 228);
+}
+
+div.search-bar .search-input.amount {
+  margin-left: 10%;
+}
+
+div.search-bar div.icon {
+  height: 100%;
+  display:flex;
+}
+
+div.search-bar div.icon img {
+  height: calc(0.75*var(--icon-size));
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 20%;
+  cursor: pointer;
+}
+
+/* Box transaction */
+div.box-transaction {
+  width: var(--center-box-size);
+  margin: 0 auto;
+  margin-top: 15%;
+  border-color: gainsboro;
+  border-width: 2px;
+  border-style: solid;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 4px 4px 8px #8888888b;
+}
+
+/* Box transaction tab (LAST MONTH/THIS MONTH/FUTURE) */
+div.box-transaction div.tab {
+  height: 60px;
+  border-color: gainsboro;
+  border-width: 2px;
+  border-style: solid;
+  overflow: hidden;
+  display: flex;
+}
+
+div.box-transaction div.tab div.tab-last-month,
+div.box-transaction div.tab div.tab-this-month,
+div.box-transaction div.tab div.tab-future {
+  float: left;
+  width: 33%;
+  text-align: center;
+  margin: auto;
+  height: 100%;
+  padding-top: 10px;
+  border-bottom: chartreuse;
+  border-top: white;
+  border-left: white;
+  border-right: white;
+  border-width: 5px;
+  border-style: solid;
+}
+
+div.box-transaction div.tab div.tab-last-month.hidden,
+div.box-transaction div.tab div.tab-this-month.hidden,
+div.box-transaction div.tab div.tab-future.hidden {
+  border-bottom: white;
+  border-top: white;
+  border-left: white;
+  border-right: white;
+  border-width: 0;
+  cursor: pointer;
+}
+
+div.box-transaction div.tab div.tab-last-month:hover,
+div.box-transaction div.tab div.tab-this-month:hover,
+div.box-transaction div.tab div.tab-future:hover {
+  font-weight: bold;
+  border-bottom: chartreuse;
+  border-top: white;
+  border-left: white;
+  border-right: white;
+  border-width: 5px;
+  border-style: solid;
+  cursor: pointer;
+}
+
+/* Box transaction period summary (Inflow/Outflow/HR/Total) */
+div.box-transaction div.period-summary {
+  height: 170px;
+  border-color: gainsboro;
+  border-width: 2px;
+  border-style: solid;
+  padding-top: 20px;
+}
+
+div.box-transaction div.period-summary div.inflow,
+div.box-transaction div.period-summary div.outflow {
+  overflow: hidden;
+}
+
+div.box-transaction div.period-summary div.inflow .label,
+div.box-transaction div.period-summary div.outflow .label {
+  float: left;
+  width: calc(100%-2*var(--center-box-padding));
+  padding-left: var(--center-box-padding);
+}
+
+div.box-transaction div.period-summary div.inflow p.balance,
+div.box-transaction div.period-summary div.outflow p.balance {
+  float: right;
+  width: 40%;
+  text-align: right;
+  padding-right: var(--center-box-padding);
+  font-weight: bold;
+}
+
+div.box-transaction div.period-summary div.inflow p.balance {
+  color:limegreen;
+}
+
+div.box-transaction div.period-summary div.outflow p.balance {
+  color: red;
+}
+
+div.box-transaction div.period-summary div.hr {
+  width: 100%;
+  height: 20px;
+}
+
+div.box-transaction div.period-summary div.hr hr {
+  width: 30%;
+  margin: 0;
+  margin-right: var(--center-box-padding);
+  float: right;
+  border-width: 1.5px;
+  border-style: solid;
+}
+
+div.box-transaction div.period-summary div.total {
+  width: 100%;
+  float: right;
+  text-align: right;
+  padding-right: var(--center-box-padding);
+}
+
+div.box-transaction div.period-summary div.total p.balance {
+  font-weight: bold;
+}
+
+/* Box transaction space between 2 divs */
+div.box-transaction div.space {
+  height: 50px;
+  background-color:#F4F4F4;
+  border-color: gainsboro;
+  border-width: 0 2px 0 2px;
+  border-style: solid;
+}
+
+/* Box transaction daily summary */
+div.box-transaction div.daily-summary div.daily {
+  border-color: gainsboro;
+  border-width: 2px;
+  border-style: solid;
+}
+
+/* Box transaction daily summary's balance by day */
+div.box-transaction div.daily-summary div.daily div.balance-by-day {
+  overflow: hidden;
+  height: var(--transaction-height);
+  border-color: gainsboro;
+  border-width: 0 0 2px 0;
+  border-style: solid;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-1 {
+  float: left;
+  width: 10%;
+  display:flex;
+  height: 100%;
+  margin-left: var(--center-box-padding);
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-1 p.day {
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-2 {
+  float: left;
+  width: 30%;
+  height: 100%;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-2 p.day-of-week {
+  padding-top: 10px;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-2 p.month-year {
+  font-size: 14px;
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-balance {
+    float: right;
+    width: 50%;
     height: 100%;
-    float:left;
-    border-color: gainsboro;
-    border-width: 2px;
-    border-style: solid;
-    background-color: rgb(255, 255, 255);
-  }
-  
-  div.slide-bar div {
-    text-align: center;
-  }
-  
-  div.slide-bar div.icon {
-    margin-bottom: var(--slide-bar-margin-top-bottom);
-    padding-top: var(--slide-bar-padding);
-    cursor: pointer;
-  }
-  
-  div.slide-bar div.icon:hover {
-    background-color: gainsboro;
-  }
-  
-  div.slide-bar div.icon img {
-    height: var(--icon-size);
-  }
-  
-  div.slide-bar div.icon p {
-    padding-bottom: var(--slide-bar-padding);
-  }
-  
-  div.slide-bar div.icon.icon-menu {
-    margin-top: 0px;
-    padding-bottom: 10px;
-    padding-bottom: 12px;
-  }
-  
-  div.slide-bar div.icon.icon-trans,
-  div.slide-bar div.icon.icon-report {
-    margin-top: var(--slide-bar-margin-top-bottom);
-  }
-  
-  div.slide-bar div.icon.icon-project {
-    margin-bottom: var(--page-height);
-  }
-  
-  
-  /* Nav bar */
-  div.nav-bar {
-    width: calc(100% - var(--slide_width));
-    height: 80px;
-    float:left;
-    border-color: gainsboro;
-    border-width: 2px;
-    border-style: solid;
-    background-color: rgb(255, 255, 255);
-  }
-  
-  div.nav-bar div.icon img {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: var(--icon-size);
-  }
-  
-  div.icon-my-wallet {
-    float:left;
-    margin-left: 20px;
-  }
-  
-  div.my-wallet-text {
-    float:left;
-    margin-left: 10px;
-  }
-  
-  div.my-wallet-text p.wallet-label {
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 0;
-  }
-  
-  div.my-wallet-text p#wallet-balance {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 0;
-  }
-  
-  div.right-btn {
-    float:right;
-    margin-right: 20px;
-    margin-top: 15px;
-    box-shadow: 4px 4px 8px #8888888b;
-  }
-  
-  div.right-btn button {
-    border-width: 0;
-    border-radius: 0;
-    color:rgb(255, 255, 255)
-  }
-  
-  div.right-btn .btn.add-trans {
-    background-color: #FFE601;
-    font-weight: bold;
-  }
-  
-  div.right-btn .btn.add-trans:hover {
-    background-color:aquamarine;
-    font-weight: bold;
-  }
-  
-  div.right-btn .btn.project {
-    background-color: #457cff;
-    font-weight: bold;
-  }
-  
-  div.right-btn .btn.project:hover {
-    background-color:aquamarine;
-    font-weight: bold;
-  }
-  
-  /* Search bar */
-  div.search-bar {
-    width: calc(100% - var(--slide_width));
-    height: 125px;
-    float:left;
-    border-color: gainsboro;
-    border-width: 2px;
-    border-style: solid;
-    background-color: rgb(255, 255, 255);
-  }
-  
-  div.search-bar .search-input {
-    height: 100px;
-    float:left;
-    border-color: rgb(190, 190, 190);
-    border-width: 2px;
-    border-style: solid;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    align-items: center;
-    width: 250px;
-  }
-  
-  div.search-bar .search-input p {
-    margin-bottom: 5px;
-  }
-  
-  div.search-bar .search-input input,
-  div.search-bar .search-input select {
-    border-color: aliceblue;
-    border-width: 3px;
-    border-radius: 5px;
-    margin-top: 5px;
-    font-size: 16px;
-    height: 40px;
-    width: 100%;
-  }
-  
-  div.search-bar .search-input select {
-    border-color:  rgb(204, 218, 228);
-  }
-  
-  div.search-bar .search-input.amount {
-    margin-left: 10%;
-  }
-  
-  div.search-bar div.icon {
-    height: 100%;
-    display:flex;
-  }
-  
-  div.search-bar div.icon img {
-    height: calc(1.25*var(--icon-size));
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 20%;
-    cursor: pointer;
-  }
+    display: flex;
+    text-align: right;
+    padding-right: var(--center-box-padding);
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-balance p.balance {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Box transaction daily summary's balance by category */
+div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail {
+  overflow: hidden;
+  height: var(--transaction-height);
+  border-color: gainsboro;
+  border-width: 0 0 2px 0;
+  border-style: solid;
+  margin-left: var(--center-box-padding);
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.label {
+  width: 30%;
+  margin: 0;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.label img {
+  float: left;
+  height: var(--category-icon-size);
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.label p {
+  float: left;
+  height: var(--category-icon-size);
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance {
+  float: right;
+  height: 100%;
+  display: flex;
+  text-align: right;
+  padding-right: var(--center-box-padding);
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p {
+  width: 100%;
+  margin-right: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p.negative {
+  color: red;
+}
+
+div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p.positive {
+  color: limegreen;
+}
+
+
+/* Blur background */
+.overlay {
+filter: blur(0px);
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0%;
+left: 0%;
+visibility: hidden;
+}
+
+.overlay.blur {
+background-color: rgba(220, 220, 220, 0.7);
+filter: blur(10px);
+visibility: visible;
+}
+
+/* Popup Add Transaction Form*/
+div.form-popup {
+border-radius: 2%;
+/*display: none;*/
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border-color: gainsboro;
+border-width: 2px;
+border-style: solid;
+box-shadow: 4px 4px 8px #8888888b;
+}
+
+#form-add-trans {
+display: none;
+}
+
+div.form-popup form.form-container {
+width: calc(var(--center-box-size) + 115px);
+height: 280px;
+padding: 10px;
+background-color: white;
+}
+div.form-popup form.form-container div.title-add-trans {
+width: 100%;
+font-weight: bold;
+padding-left: 20px;
+padding-bottom: 10px;
+overflow: hidden;
+border-color: gainsboro;
+border-width: 0 0 2px 0;
+border-style: solid;
+}
+div.form-popup form.form-container div.form-input {
+height: var(--search-box-height);
+float:left;
+margin-left: 10px;
+margin-right: 10px;
+border-radius: 10px;
+align-items: center;
+width: 200px;
+}
+div.form-popup form.form-container .form-input p {
+margin-bottom: 0;
+margin-top: 5px;
+margin-left: 10px;
+font-size: 16px;
+}
+
+div.form-popup form.form-container .form-input input,
+div.form-popup form.form-container .form-input select {
+border-color: aliceblue;
+border-width: 3px;
+border-radius: 5px;
+margin-top: 5px;
+margin-bottom: 0;
+margin-left: 10px;
+font-size: 16px;
+height: 40%;
+width: 100%;
+}
+div.form-popup form.form-container div.form-input.note{
+width: 380px;
+}
+div.form-popup form.form-container .btn {
+margin-top: 10px;
+float:right;
+bottom: 0;
+margin-right: 20px;
+box-shadow: 4px 4px 8px #8888888b;
+opacity: 0.8;
+}
+div.form-popup form.form-container .btn.save{
+background-color: limegreen;
+color: white;
+width: 100px;
+}
+div.form-popup form.form-container .btn:hover,
+.btn.save:hover {
+opacity: 1;
+}
+div.form-popup form.form-container .btn.cancel{
+background-color: rgb(227, 223, 223);
+color: limegreen;
+width: 100px;
+}
