@@ -9,6 +9,8 @@ import React from 'react';
 		<p id="wallet-balance">xxx,000đ</p>
 	</div>
 	<div className="right-btn">
-		<button className="btn add-trans">+ TRANSACTION</button>
+		<button className="btn add-trans" onClick={openForm}>
+			+ TRANSACTION
+		</button>
 	</div>
 </div>
