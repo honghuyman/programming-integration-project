@@ -25,7 +25,7 @@ export default class Login extends Component
         fetch("http://localhost:3005/login", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ username, password })    // Send username & password to BE
         })
             .then(response => response.json())
             .then(data =>
@@ -35,11 +35,9 @@ export default class Login extends Component
                 // Display message
                 if (data.message === "SUCCESS")
                 {
-                    alert("Login successful");
-                    // window.localStorage.setItem("token", data.data);
-
+                    window.localStorage.setItem("token", username);
                     // TODO redirect
-                    window.location.href = "";
+                    window.location.href = "../project";
                 }
                 else if (data.message === "NOT REGISTERED")
                 {
@@ -61,7 +59,7 @@ export default class Login extends Component
                 style={{ backgroundImage: "url(bg-login.jpeg)", backgroundSize: `100% 100%` }}
             >
                 {/* Image */}
-                <div className="col-md-6 d-none d-sm-block">
+                <div className="col-md-6 d-none d-sm-block p-0">
                     <img src="login.png" alt="login" className="w-100" />
                 </div>
 
