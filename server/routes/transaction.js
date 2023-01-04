@@ -19,7 +19,27 @@ transactionRoutes.get('/all-transactions/:user_ID', (req, res) => {
         .select('-user_ID')
         .exec(function (err, records) {
             if (err) return res.send(err);
-            res.json(records);
+            const data = records;
+
+            // this gives an object with dates as keys
+            const groups = data.reduce((groups, transaction) => {
+                const date = transaction.date.toISOString().split('T')[0];
+                if (!groups[date]) {
+                    groups[date] = [];
+                }
+                groups[date].push(transaction);
+                return groups;
+            }, {});
+
+            // Edit: to add it in the array format instead
+            const groupArrays = Object.keys(groups).map((date) => {
+                return {
+                    date,
+                    transactions: groups[date]
+                };
+            });
+
+            res.json(groupArrays);
         })
 })
 
