@@ -18,7 +18,7 @@ function App()
             <div className='App'>
                 <Routes>
                     {/* TODO Change to transaction */}
-                    <Route exact path="/" element={<Login />} />
+                    <Route exact path="/" element={<Transaction />} />
 
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
