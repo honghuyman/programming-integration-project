@@ -91,7 +91,7 @@ RESPONSE [
 #### Get all transactions of user
 
 ```javascript
-GET "http://localhost:5000/all-transactions/<user_ID>"
+GET "http://localhost:3005/all-transactions/<user_ID>"
 RESPONSE [
     {
         date: String, // yyyy-mm-dd
@@ -113,7 +113,7 @@ RESPONSE [
 
 #### Get transaction by ID
 ```javascript
-GET "http://localhost:5000/transaction/<transaction_ID>"
+GET "http://localhost:3005/transaction/<transaction_ID>"
 RESPONSE {
     _id: String,
     amount: Number,
@@ -128,14 +128,14 @@ RESPONSE {
 ```
 #### Get balance of user
 ```javascript
-GET "http://localhost:5000/balance/<user_ID>"
+GET "http://localhost:3005/balance/<user_ID>"
 RESPONSE { account_balance: Number }
 ```
 
 #### Add transaction
 
 ```javascript
-POST "http://localhost:5000/add-transaction"
+POST "http://localhost:3005/add-transaction"
 REQUEST {
     user_ID: String,
     amount: Number,
@@ -148,7 +148,7 @@ RESPONSE { message: "SUCCESS" }
 
 #### Update transaction
 ```javascript
-POST "http://localhost:5000/update-transaction"
+POST "http://localhost:3005/update-transaction"
 REQUEST {
     transaction_ID: String,
     amount: Number,
@@ -162,7 +162,7 @@ RESPONSE { message: "SUCCESS" }
 #### Delete transaction
 
 ```javascript
-POST "http://localhost:5000/delete-transaction"
+POST "http://localhost:3005/delete-transaction"
 REQUEST {
     transaction_ID: String
 }

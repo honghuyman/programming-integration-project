@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+
+// Style
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default class Login extends Component
 {
@@ -25,21 +29,18 @@ export default class Login extends Component
         fetch("http://localhost:3005/login", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ username, password })    // Send username & password to BE
         })
             .then(response => response.json())
             .then(data =>
             {
-                console.log(data.message);
-
                 // Display message
                 if (data.message === "SUCCESS")
                 {
-                    alert("Login successful");
-                    // window.localStorage.setItem("token", data.data);
-
+                    window.localStorage.setItem("username", username);
+                    window.localStorage.setItem("userID", data.user['_id']);
                     // TODO redirect
-                    window.location.href = "";
+                    window.location.href = "../transaction";
                 }
                 else if (data.message === "NOT REGISTERED")
                 {
@@ -56,18 +57,18 @@ export default class Login extends Component
     render()
     {
         return (
-            <div 
-                className="row" 
+            <div
+                className="row"
                 style={{ backgroundImage: "url(bg-login.jpeg)", backgroundSize: `100% 100%` }}
             >
                 {/* Image */}
-                <div className="col-md-6 d-none d-sm-block">
+                <div className="col-md-6 d-none d-sm-block p-0">
                     <img src="login.png" alt="login" className="w-100" />
                 </div>
 
                 {/* Login form */}
-                <form 
-                    onSubmit={this.handleSubmit} 
+                <form
+                    onSubmit={this.handleSubmit}
                     className="col-md-6 col-sm-12 px-5 m-auto text-start"
                 >
                     <h1 className="h2 mt-3 text-light">LOGIN</h1>
@@ -88,6 +89,10 @@ export default class Login extends Component
                             placeholder="Password"
                             onChange={(e) => this.setState({ password: e.target.value })}
                         />
+                    </div>
+
+                    <div className="text-end pe-1 mt-2">
+                        <Link to='../register' className="cusLink">Register</Link>
                     </div>
 
                     <div className="my-3 text-center">
