@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+// Style
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default class Register extends Component
 {
@@ -91,6 +95,10 @@ export default class Register extends Component
                             placeholder="Confirm password"
                             onChange={(e) => this.setState({ password2: e.target.value })}
                         />
+                    </div>
+
+                    <div className="text-end pe-1 mt-2">
+                        <Link to='../login' className="cusLink">Login</Link>
                     </div>
 
                     <div className="my-3 text-center">

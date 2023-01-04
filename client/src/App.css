@@ -50,6 +50,10 @@ div.page-container {
     background-color: gainsboro;
 }
 
+.cusLink {
+    color: white;
+}
+
 /* Side bar */
 div.side-bar {
     width: var(--bar-width);
