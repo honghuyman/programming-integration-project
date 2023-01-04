@@ -6,7 +6,7 @@ let data = {
     date: Date(1,1,2023)
 };
 
-fetch("http://localhost:5000/add-transaction", {
+fetch("http://localhost:3005/add-transaction", {
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
