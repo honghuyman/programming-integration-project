@@ -253,9 +253,9 @@ div.box-transaction div.tab {
     display: flex;
 }
 
-div.box-transaction div.tab div.tab-last-month,
-div.box-transaction div.tab div.tab-this-month,
-div.box-transaction div.tab div.tab-future {
+div.box-transaction div.tab .tab-last-month,
+div.box-transaction div.tab .tab-this-month,
+div.box-transaction div.tab .tab-future {
     float: left;
     width: 33%;
     text-align: center;
@@ -268,11 +268,13 @@ div.box-transaction div.tab div.tab-future {
     border-right: white;
     border-width: 5px;
     border-style: solid;
+    text-decoration: none;
+    color: black;
 }
 
-div.box-transaction div.tab div.tab-last-month.hidden,
-div.box-transaction div.tab div.tab-this-month.hidden,
-div.box-transaction div.tab div.tab-future.hidden {
+div.box-transaction div.tab .tab-last-month.hidden,
+div.box-transaction div.tab .tab-this-month.hidden,
+div.box-transaction div.tab .tab-future.hidden {
     border-bottom: white;
     border-top: white;
     border-left: white;
@@ -281,9 +283,9 @@ div.box-transaction div.tab div.tab-future.hidden {
     cursor: pointer;
 }
 
-div.box-transaction div.tab div.tab-last-month:hover,
-div.box-transaction div.tab div.tab-this-month:hover,
-div.box-transaction div.tab div.tab-future:hover {
+div.box-transaction div.tab .tab-last-month:hover,
+div.box-transaction div.tab .tab-this-month:hover,
+div.box-transaction div.tab .tab-future:hover {
     font-weight: bold;
     border-bottom: #2DB84C;
     border-top: white;
@@ -535,8 +537,7 @@ div.form-popup form.form-container {
 div.form-popup form.form-container div.title-add-trans {
     width: 100%;
     font-weight: bold;
-    padding-left: 20px;
-    padding-bottom: 10px;
+    padding: 10px;
     overflow: hidden;
     border-color: gainsboro;
     border-width: 0 0 2px 0;
@@ -546,6 +547,8 @@ div.form-popup form.form-container div.title-add-trans {
 div.form-popup form.form-container div.form-input {
     height: var(--search-box-height);
     float: left;
+    text-align: left;
+    font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 10px;
@@ -587,8 +590,9 @@ div.form-popup form.form-container .btn {
 }
 
 div.form-popup form.form-container .btn.save {
-    background-color: limegreen;
-    color: white;
+    background-color: #2DB84C;
+    color: black;
+    font-weight: bold;
     width: 100px;
 }
 
@@ -599,6 +603,7 @@ div.form-popup form.form-container .btn:hover,
 
 div.form-popup form.form-container .btn.cancel {
     background-color: rgb(227, 223, 223);
-    color: limegreen;
+    color: black;
+    font-weight: bold;
     width: 100px;
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SideBar from '../components/sideBar';
 import '../App.css';
 
 // Style
@@ -7,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 // Components
 import NavBar from '../components/navbar-transaction';
-// import SideBar from '../components/sideBar';
+import SideBar from '../components/sideBar';
 
 export default class Transaction extends Component
 {
@@ -17,6 +16,17 @@ export default class Transaction extends Component
 		document.querySelector('.tab-this-month').classList.add('hidden');
 		document.querySelector('.tab-future').classList.add('hidden');
 		console.log('Click last month tab');
+		
+		fetch('http://localhost:3005/all-transactions/1')
+			.then((response) => response.json())
+			// .then((data) => console.log(data))
+			.then((json) =>
+			{
+				this.setState({
+					transData: json,
+					DataIsLoaded: true
+				});
+			})
 	};
 
 	clickThisMonthTab()
@@ -25,6 +35,17 @@ export default class Transaction extends Component
 		document.querySelector('.tab-last-month').classList.add('hidden');
 		document.querySelector('.tab-future').classList.add('hidden');
 		console.log('Click this month tab');
+
+		fetch('http://localhost:3005/all-transactions/63b039df07258122b58d3b2a')
+			.then((response) => response.json())
+			// .then((data) => console.log(data))
+			.then((json) =>
+			{
+				this.setState({
+					transData: json,
+					DataIsLoaded: true
+				});
+			})
 	};
 
 	clickFutureTab() 
@@ -33,6 +54,17 @@ export default class Transaction extends Component
 		document.querySelector('.tab-last-month').classList.add('hidden');
 		document.querySelector('.tab-this-month').classList.add('hidden');
 		console.log('Click future tab');
+
+		fetch('http://localhost:3005/all-transactions/3')
+			.then((response) => response.json())
+			// .then((data) => console.log(data))
+			.then((json) =>
+			{
+				this.setState({
+					transData: json,
+					DataIsLoaded: true
+				});
+			})
 	};
 
 	constructor(props)
@@ -40,8 +72,7 @@ export default class Transaction extends Component
 		super(props);
 
 		this.state = {
-			transData: [],
-			DataIsLoaded: false
+			transData: []
 		};
 	}
 
@@ -56,28 +87,18 @@ export default class Transaction extends Component
 			.then((json) =>
 			{
 				this.setState({
-					transData: json,
-					DataIsLoaded: true
+					transData: json
 				});
 			})
 	}
 
 	render()
 	{
-		const { DataIsLoaded, transData } = this.state;
-
-		if (!DataIsLoaded)
-		{
-			return (
-				<div>
-					<h1>You don't have any transaction...</h1>
-				</div>
-			);
-		}
+		const { transData } = this.state;
 
 		// * PREPARE DATA
-		const weekdayArr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-		const monthArr = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+		const weekdayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		const monthArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 		let sumIn = 0, sumOut = 0;
 		for (let i = 0; i < transData.length; i++)
@@ -114,15 +135,15 @@ export default class Transaction extends Component
 
 				<div className="box-transaction">
 					<div className="tab">
-						<div className="tab-last-month hidden" onClick={this.clickLastMonthTab}>
+						<div to='last-month' className="tab-last-month hidden" onClick={this.clickLastMonthTab}>
 							LAST MONTH
 						</div>
 
-						<div className="tab-this-month" onClick={this.clickThisMonthTab}>
+						<div to='this-month' className="tab-this-month" onClick={this.clickThisMonthTab}>
 							THIS MONTH
 						</div>
 
-						<div className="tab-future hidden" onClick={this.clickFutureTab}>
+						<div to='next-month' className="tab-future hidden" onClick={this.clickFutureTab}>
 							NEXT MONTH
 						</div>
 					</div>
@@ -179,7 +200,7 @@ export default class Transaction extends Component
 													</div>
 
 													<div className="balance">
-														<p className={(tran.amount < 0? "negative" : "positive") + " fw-bold"}>{tran.amount.toLocaleString('en-US')} đ</p>
+														<p className={(tran.amount < 0 ? "negative" : "positive") + " fw-bold"}>{tran.amount.toLocaleString('en-US')} đ</p>
 													</div>
 												</div>
 											</div>
