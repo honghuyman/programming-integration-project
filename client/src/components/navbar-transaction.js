@@ -10,7 +10,7 @@ export default class NavBar extends Component
 	{
 		super(props);
 
-		this.state = { user_ID: "", amount: "", category_ID: "", date: "", note: "", cateData: [] };
+		this.state = { user_ID: "", amount: "", category_ID: "", date: "", note: "", cateData: [], balance: [] };
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -23,8 +23,17 @@ export default class NavBar extends Component
 			{
 				this.setState({
 					cateData: json
-				}
-				)
+				})
+			});
+
+					fetch("http://localhost:3005/balance/63b039df07258122b58d3b2a")
+			.then(response => response.json())
+			// .then(data => console.log(data))
+			.then((json) =>
+			{
+				this.setState({
+					balance: json
+				})
 			});
 	}
 
@@ -50,7 +59,7 @@ export default class NavBar extends Component
 				{
 					alert("Successfully add transaction");
 				}
-				
+
 				// TODO Check again
 				// window.location.href = "/transaction";
 			})
@@ -74,7 +83,7 @@ export default class NavBar extends Component
 
 	render()
 	{
-		const { cateData } = this.state;
+		const { cateData, balance } = this.state;
 		return (
 
 			<>
@@ -85,7 +94,7 @@ export default class NavBar extends Component
 
 					<div className="my-wallet-text">
 						<p className="fw-bold text-start wallet-label">My Wallet</p>
-						<p id="wallet-balance">xxx,000đ</p>
+						<p id="wallet-balance">{balance.account_balance} đ</p>
 					</div>
 
 					{/* Search bar */}
@@ -191,7 +200,7 @@ export default class NavBar extends Component
 
 						<button
 							type="cancel"
-							className="btn cancel" 
+							className="btn cancel"
 							onClick={this.closeForm}
 						>
 							CANCEL
