@@ -28,16 +28,16 @@ export default class NavBar extends Component
 
 			<>
 				<div className="nav-bar mb-5">
-					<div className="icon icon-my-wallet my-4">
+					<div className="icon icon-my-wallet">
 						<img src="https://cdn-icons-png.flaticon.com/512/60/60484.png" alt='wallet icon' />
 					</div>
 
-					<div className="my-wallet-text mt-4">
+					<div className="my-wallet-text">
 						<p className="fw-bold text-start wallet-label">My Wallet</p>
 						<p id="wallet-balance">xxx,000đ</p>
 					</div>
 
-					<div className='search-bar my-2'>
+					{/* <div className='search-bar my-2'>
 						<div className="search-input amount">
 							<p>Amount</p>
 							<input type="number" placeholder="0" />
@@ -67,9 +67,9 @@ export default class NavBar extends Component
 							<p>Note</p>
 							<input type="text" autoComplete="true" />
 						</div> */}
-					</div>
+					{/* </div> */}
 
-					<div className="right-btn my-4">
+					<div className="right-btn">
 						<button
 							onClick={this.openForm}
 							className="btn add-trans text-dark">

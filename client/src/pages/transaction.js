@@ -40,7 +40,7 @@ export default class Transaction extends Component
 		super(props);
 
 		this.state = {
-			transactions: [],
+			transData: [],
 			DataIsLoaded: false
 		};
 	}
@@ -52,19 +52,19 @@ export default class Transaction extends Component
 		// TODO Change ID into userID, uncomment the above line
 		fetch('http://localhost:3005/all-transactions/63b039df07258122b58d3b2a')
 			.then((response) => response.json())
+			// .then((data) => console.log(data))
 			.then((json) =>
 			{
 				this.setState({
-					transactions: json,
+					transData: json,
 					DataIsLoaded: true
 				});
 			})
-			.then((data) => console.log(data));
 	}
 
 	render()
 	{
-		const { DataIsLoaded, transactions } = this.state;
+		const { DataIsLoaded, transData } = this.state;
 
 		if (!DataIsLoaded)
 		{
@@ -75,16 +75,25 @@ export default class Transaction extends Component
 			);
 		}
 
-		let date = [];
-		let trans = [];
-		for (let i = 0; i < transactions.length; i++)
+		// * Prepare data
+		let sumIn = 0, sumOut = 0;
+		for (let i = 0; i < transData.length; i++)
 		{
-			let temp = transactions[i]['date'].slide(0, 10);
-			if (!date.includes(temp))
+			let sumOfDate = 0;
+			for (let j = 0; j < transData[i].transactions.length; j++)
 			{
-				date.push('temp');
-				
+				let amt = transData[i].transactions[j].amount;
+
+				sumOfDate += amt;
+
+				if (amt < 0)
+					sumOut += amt;
+				else
+					sumIn += amt;
 			}
+			transData[i].sum = sumOfDate;
+
+			console.log(transData[i]);
 		}
 
 		return (
@@ -103,28 +112,28 @@ export default class Transaction extends Component
 						</div>
 
 						<div className="tab-future hidden" onClick={this.clickFutureTab}>
-							FUTURE
+							NEXT MONTH
 						</div>
 					</div>
+				</div>
 
+				<div className='box-transaction'>
 					<div className="period-summary">
 						<div className="inflow">
 							<p className="label">Inflow</p>
-							<p className="balance">500,000 ₫</p>
-							{/* data */}
+							<p className="balance">{sumIn.toLocaleString('en-US')} đ</p>
 						</div>
 
 						<div className="outflow">
 							<p className="label">Outflow</p>
-							<p className="balance">-300,000 ₫</p>
-							{/* data */}
+							<p className="balance">{(sumOut != 0 ? sumOut * -1 : 0).toLocaleString('en-US')} ₫</p>
 						</div>
 
 						<div className="hr">
 							<hr />
 						</div>
 						<div className="total">
-							<p className="balance">200,000 ₫</p>
+							<p className="balance">{(sumIn + sumOut).toLocaleString('en-US')} ₫</p>
 							{/* data */}
 						</div>
 					</div>
@@ -133,53 +142,40 @@ export default class Transaction extends Component
 
 					<div className="daily-summary">
 						{
-							transactions.map((trans) => (
-								<div className="daily" id="day">
+							transData.map((trans, index) => (
+								<div className="daily" id="day" key={index}>
 									<div className="balance-by-day">
 										<div className="day-description-1">
-											<p className="day">{trans.date[8] + trans.date[9]}</p> {/* data */}
+											<p className="day">{trans.date[8] + trans.date[9]}</p>
 										</div>
 
 										<div className="day-description-2">
+											{/* TODO add day-of-week */}
 											<p className="day-of-week">Friday</p> {/* data */}
 											<p className="text-start month-year">December 2022</p> {/* data */}
 										</div>
 
 										<div className="day-balance">
-											<p className="balance">200,000 ₫</p>
-											{/* data */}
+											<p className="balance">{trans.sum} đ</p>
 										</div>
 									</div>
+									{
+										trans.transactions.map((tran) => (
+											<div className="balance-by-category">
+												<div className="balance-detail category">
+													<div className="label">
+														{/* TODO Img makes text disappear */}
+														{/* <img src="https://cdn-icons-png.flaticon.com/512/9118/9118242.png" alt='icon'/> */}
+														<p className='fw-bold'>{tran.category_ID.name}</p>
+													</div>
 
-									<div className="balance-by-category">
-										<div className="balance-detail category">
-											<div className="label">
-												<img src="https://cdn-icons-png.flaticon.com/512/9118/9118242.png" alt='icon' />
-												{/* img src: data */}
-												<p>Category_1</p>
-												{/* category name: data */}
+													<div className="balance">
+														<p className={(tran.amount < 0? "negative" : "positive") + " fw-bold"}>{tran.amount.toLocaleString('en-US')} đ</p>
+													</div>
+												</div>
 											</div>
-
-											<div className="balance">
-												<p className="negative">-300,000 ₫</p>{' '}
-												{/* className = negative/positive: based on amount data */}
-											</div>
-										</div>
-
-										<div className="balance-detail category">
-											<div className="label">
-												<img src="https://cdn-icons-png.flaticon.com/512/9118/9118242.png" alt='icon' />
-												{/* img src: data */}
-												<p>Category_2</p>
-												{/* category name: data */}
-											</div>
-
-											<div className="balance">
-												<p className="positive">500,000 ₫</p>{' '}
-												{/* className = negative/positive: based on amount data */}
-											</div>
-										</div>
-									</div>
+										))
+									}
 								</div>
 							))
 						}

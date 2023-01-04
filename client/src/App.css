@@ -22,7 +22,7 @@
 
 :root {
     --bar-width: 8%;
-    --bar-height: 120px;
+    --bar-height: 80px;
     --search-box-height: 80px;
     --center-box-padding: 8%;
     --center-box-size: 550px;
@@ -371,7 +371,7 @@ div.box-transaction div.daily-summary div.daily {
     border-color: gainsboro;
     border-width: 2px;
     border-style: solid;
-    border-radius: 0 0 10px 10px;
+    /* border-radius: 0 0 10px 10px; */
 }
 
 /* Box transaction daily summary's balance by day */
@@ -435,7 +435,7 @@ div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-balan
 }
 
 /* Box transaction daily summary's balance by category */
-div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail {
+div.balance-by-category div.balance-detail {
     overflow: hidden;
     height: var(--transaction-height);
     border-color: gainsboro;
@@ -444,12 +444,12 @@ div.box-transaction div.daily-summary div.daily div.balance-by-category div.bala
     margin-left: var(--center-box-padding);
 }
 
-div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.label {
+div.balance-by-category div.balance-detail div.label {
     width: 30%;
     margin: 0;
 }
 
-div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.label img {
+div.balance-by-category div.balance-detail div.label img {
     float: left;
     height: var(--category-icon-size);
     border-radius: 50%;
@@ -460,14 +460,14 @@ div.box-transaction div.daily-summary div.daily div.balance-by-category div.bala
     border-style: solid;
 }
 
-div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.label p {
+div.balance-by-category div.balance-detail div.label p {
     float: left;
     height: var(--category-icon-size);
-    margin-left: 20px;
-    margin-top: 25px;
+    /* margin-left: 20px;  */
+    margin-top: 25px;  
 }
 
-div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance {
+div.balance-by-category div.balance-detail div.balance {
     float: right;
     height: 100%;
     display: flex;
@@ -475,18 +475,18 @@ div.box-transaction div.daily-summary div.daily div.balance-by-category div.bala
     padding-right: var(--center-box-padding);
 }
 
-div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p {
+div.balance-by-category div.balance-detail div.balance p {
     width: 100%;
     margin-right: 5px;
     margin-top: auto;
     margin-bottom: auto;
 }
 
-div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p.negative {
+div.balance-by-category div.balance-detail div.balance p.negative {
     color: red;
 }
 
-div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p.positive {
+div.balance-by-category div.balance-detail div.balance p.positive {
     color: #2DB84C;
 }
 
