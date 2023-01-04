@@ -75,10 +75,14 @@ export default class Transaction extends Component
 			);
 		}
 
-		// * Prepare data
+		// * PREPARE DATA
+		const weekdayArr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+		const monthArr = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
 		let sumIn = 0, sumOut = 0;
 		for (let i = 0; i < transData.length; i++)
 		{
+			// * Amount
 			let sumOfDate = 0;
 			for (let j = 0; j < transData[i].transactions.length; j++)
 			{
@@ -92,6 +96,13 @@ export default class Transaction extends Component
 					sumIn += amt;
 			}
 			transData[i].sum = sumOfDate;
+
+			// * Day, Month & Year, Day of Week
+			let d = new Date(transData[i].date);
+			transData[i].weekday = weekdayArr[d.getDay()];
+			transData[i].day = d.getDate();
+			transData[i].month_year = monthArr[d.getMonth()] + " " + d.getFullYear().toString();
+
 
 			console.log(transData[i]);
 		}
@@ -126,7 +137,7 @@ export default class Transaction extends Component
 
 						<div className="outflow">
 							<p className="label">Outflow</p>
-							<p className="balance">{(sumOut != 0 ? sumOut * -1 : 0).toLocaleString('en-US')} ₫</p>
+							<p className="balance">{(sumOut !== 0 ? sumOut * -1 : 0).toLocaleString('en-US')} ₫</p>
 						</div>
 
 						<div className="hr">
@@ -134,7 +145,6 @@ export default class Transaction extends Component
 						</div>
 						<div className="total">
 							<p className="balance">{(sumIn + sumOut).toLocaleString('en-US')} ₫</p>
-							{/* data */}
 						</div>
 					</div>
 
@@ -150,9 +160,8 @@ export default class Transaction extends Component
 										</div>
 
 										<div className="day-description-2">
-											{/* TODO add day-of-week */}
-											<p className="day-of-week">Friday</p> {/* data */}
-											<p className="text-start month-year">December 2022</p> {/* data */}
+											<p className="day-of-week">{trans.weekday}</p>
+											<p className="text-start month-year">{trans.month_year}</p>
 										</div>
 
 										<div className="day-balance">
