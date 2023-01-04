@@ -93,17 +93,21 @@ RESPONSE [
 ```javascript
 GET "http://localhost:5000/all-transactions/<user_ID>"
 RESPONSE [
-  {
-    _id: String,
-    amount: Number,
-    note: String,
-    date: Date,
-    category_ID: {
-      _id: String,
-      name: String,
-      type: String // "income" or "spending"
-    },
-  }
+    {
+        date: String, // yyyy-mm-dd
+        transactions: [
+            {
+                _id: String,
+                amount: Number,
+                note: String,
+                category_ID: {
+                    _id: String,
+                    name: String,
+                    type: String // "income" or "spending"
+                }
+            }
+        ]
+    }
 ]
 ```
 
