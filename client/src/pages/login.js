@@ -30,14 +30,13 @@ export default class Login extends Component
             .then(response => response.json())
             .then(data =>
             {
-                console.log(data.message);
-
                 // Display message
                 if (data.message === "SUCCESS")
                 {
-                    window.localStorage.setItem("token", username);
+                    window.localStorage.setItem("username", username);
+                    window.localStorage.setItem("userID", data.user['_id']);
                     // TODO redirect
-                    window.location.href = "../project";
+                    window.location.href = "../transaction";
                 }
                 else if (data.message === "NOT REGISTERED")
                 {

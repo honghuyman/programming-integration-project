@@ -22,7 +22,7 @@
 
 :root {
     --bar-width: 8%;
-    --bar-height: 85px;
+    --bar-height: 120px;
     --search-box-height: 80px;
     --center-box-padding: 8%;
     --center-box-size: 550px;
@@ -53,7 +53,8 @@ div.page-container {
 /* Side bar */
 div.side-bar {
     width: var(--bar-width);
-    height: 100vh;      /* 100% */
+    min-height: 100vh;      /* 100% */
+    height: auto;
     float: left;
     border-color: gainsboro;
     border-width: 2px;
@@ -174,13 +175,14 @@ div.right-btn .btn.project:hover {
 
 /* Search bar */
 div.search-bar {
-    width: calc(100vh - var(--bar-width));
-    height: var(--bar-height);  /* 125px */
-    float: left;
+    /* width: calc(100% - var(--bar-width));
+    height: 120px;  /* 125px */
+    /* float: left;
     border-color: gainsboro;
     border-width: 2px;
     border-style: solid;
     background-color: rgb(255, 255, 255);
+    padding: 10px 0px; */
 }
 
 div.search-bar .search-input {
@@ -190,7 +192,7 @@ div.search-bar .search-input {
     border-width: 2px;
     border-style: solid;
     padding: 10px;
-    margin: 0px 10px;
+    margin: 10px;
     border-radius: 10px;
     align-items: center;
     width: 200px;   /* 250px */
@@ -217,7 +219,7 @@ div.search-bar .search-input select {
 }
 
 div.search-bar .search-input.amount {
-    margin-left: 10%;
+    margin-left: 10px;
 }
 
 div.search-bar div.icon {
@@ -236,13 +238,8 @@ div.search-bar div.icon img {
 /* Box transaction */
 div.box-transaction {
     width: var(--center-box-size);
-    margin: 0 auto;
-    margin-top: 15%;
-    border-color: gainsboro;
-    border-width: 2px;
-    border-style: solid;
+    margin: 0px auto;
     background-color: rgb(255, 255, 255);
-    box-shadow: 4px 4px 8px #8888888b;
 }
 
 /* Box transaction tab (LAST MONTH/THIS MONTH/FUTURE) */
@@ -251,6 +248,7 @@ div.box-transaction div.tab {
     border-color: gainsboro;
     border-width: 2px;
     border-style: solid;
+    border-radius: 10px 10px 0 0;
     overflow: hidden;
     display: flex;
 }
@@ -264,7 +262,7 @@ div.box-transaction div.tab div.tab-future {
     margin: auto;
     height: 100%;
     padding-top: 10px;
-    border-bottom: chartreuse;
+    border-bottom: #2DB84C;
     border-top: white;
     border-left: white;
     border-right: white;
@@ -287,7 +285,7 @@ div.box-transaction div.tab div.tab-last-month:hover,
 div.box-transaction div.tab div.tab-this-month:hover,
 div.box-transaction div.tab div.tab-future:hover {
     font-weight: bold;
-    border-bottom: chartreuse;
+    border-bottom: #2DB84C;
     border-top: white;
     border-left: white;
     border-right: white;
@@ -327,7 +325,7 @@ div.box-transaction div.period-summary div.outflow p.balance {
 }
 
 div.box-transaction div.period-summary div.inflow p.balance {
-    color: limegreen;
+    color: #2DB84C;
 }
 
 div.box-transaction div.period-summary div.outflow p.balance {
@@ -373,6 +371,7 @@ div.box-transaction div.daily-summary div.daily {
     border-color: gainsboro;
     border-width: 2px;
     border-style: solid;
+    border-radius: 0 0 10px 10px;
 }
 
 /* Box transaction daily summary's balance by day */
@@ -488,9 +487,8 @@ div.box-transaction div.daily-summary div.daily div.balance-by-category div.bala
 }
 
 div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p.positive {
-    color: limegreen;
+    color: #2DB84C;
 }
-
 
 /* Blur background */
 .overlay {
