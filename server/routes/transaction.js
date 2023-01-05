@@ -17,6 +17,7 @@ transactionRoutes.get('/all-transactions/:user_ID', (req, res) => {
     Transaction.find({ user_ID })
         .populate('category_ID')
         .select('-user_ID')
+        .sort('-date')
         .exec(function (err, records) {
             if (err) return res.send(err);
             const data = records;
