@@ -5,8 +5,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 
 // Page
-import Login from './components/login'
-import Register from './components/register';
+import Login from './pages/login'
+import Register from './pages/register';
+import Project from './pages/project';
+import Transaction from './pages/transaction';
 import Modal from './components/Modal/Modal';
 import Report from './components/Report/Report';
 import Barchart from './components/Barchart';
