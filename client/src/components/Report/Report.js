@@ -133,7 +133,7 @@ export default function Report() {
                                 </React.Fragment>
                             </div>
                             <div className="container-fluid">
-                                <button onClick={handleClickOpen}>Income</button>
+                            <button onClick={handleClickOpen}>Income</button>
                                 <div>
                                 {popup?
                                 <div className="main1">
@@ -147,14 +147,14 @@ export default function Report() {
                                                 <div className="date">15/12/2022</div>
                                                 <div className="transaction detailin">
                                                     <div className="detailContainer">
-                                                        <h3 className="spend">Spend</h3>
-                                                        <h3 className="spend money">${500000}</h3>
+                                                        <h3 className="income">Salary</h3>
+                                                        <h3 className="income money">${500000}</h3>
                                                     </div>
                                                 </div>
                                                 <div className="transaction detailin">
                                                     <div className="detailContainer">
-                                                        <h3 className="spend">Spend</h3>
-                                                        <h3 className="spend money">${500000}</h3>
+                                                        <h3 className="income">Freelance Projects</h3>
+                                                        <h3 className="income money">${500000}</h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,7 +162,7 @@ export default function Report() {
                                                 <div className="date">15/12/2022</div>
                                                 <div className="transaction detailin">
                                                     <div className="detailContainer">
-                                                        <h3 className="income">Income</h3>
+                                                        <h3 className="income">Overtime working</h3>
                                                         <h3 className="income money">${500000}</h3>
                                                     </div>
                                                 </div>
@@ -171,7 +171,45 @@ export default function Report() {
                                     </div>
                                 </div>:""}
                                 </div>
-                                <button>Expense</button>
+
+                                <button onClick={handleClickOpen}>Expense</button>
+                                <div>
+                                {popup?
+                                <div className="main1">
+                                    <div className="popup1">
+                                        <div className="popup-header1">
+                                            <h2>Expense</h2>
+                                            <h3 onClick={closePopup}>x</h3>
+                                        </div>
+                                        <div className="reportContainer">
+                                            <div className="transaction">
+                                                <div className="date">15/12/2022</div>
+                                                <div className="transaction detailin">
+                                                    <div className="detailContainer">
+                                                        <h3 className="spend">Eating</h3>
+                                                        <h3 className="spend money">${500000}</h3>
+                                                    </div>
+                                                </div>
+                                                <div className="transaction detailin">
+                                                    <div className="detailContainer">
+                                                        <h3 className="spend">Electricity Bills</h3>
+                                                        <h3 className="spend money">${500000}</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="transaction">
+                                                <div className="date">15/12/2022</div>
+                                                <div className="transaction detailin">
+                                                    <div className="detailContainer">
+                                                        <h3 className="spend">Phone Bills</h3>
+                                                        <h3 className="spend money">${500000}</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>:""}
+                                </div>
                             </div>
                         </div>
                     </div>
