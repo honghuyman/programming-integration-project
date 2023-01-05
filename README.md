@@ -88,6 +88,87 @@ RESPONSE [
 ]
 ```
 
+#### Get all transactions of user
+
+```javascript
+GET "http://localhost:3005/all-transactions/<user_ID>"
+RESPONSE [
+    {
+        date: String, // yyyy-mm-dd
+        transactions: [
+            {
+                _id: String,
+                amount: Number,
+                note: String,
+                category_ID: {
+                    _id: String,
+                    name: String,
+                    type: String // "income" or "spending"
+                }
+            }
+        ]
+    }
+]
+```
+
+#### Get transaction by ID
+```javascript
+GET "http://localhost:3005/transaction/<transaction_ID>"
+RESPONSE {
+    _id: String,
+    amount: Number,
+    note: String,
+    date: Date,
+    category_ID: {
+      _id: String,
+      name: String,
+      type: String // "income" or "spending"
+    },
+}
+```
+#### Get balance of user
+```javascript
+GET "http://localhost:3005/balance/<user_ID>"
+RESPONSE { account_balance: Number }
+```
+
+#### Add transaction
+
+```javascript
+POST "http://localhost:3005/add-transaction"
+REQUEST {
+    user_ID: String,
+    amount: Number,
+    category_ID: String,
+    note: String,
+    date: Date
+}
+RESPONSE { message: "SUCCESS" }
+```
+
+#### Update transaction
+```javascript
+POST "http://localhost:3005/update-transaction"
+REQUEST {
+    transaction_ID: String,
+    amount: Number,
+    category_ID: String,
+    note: String,
+    date: Date
+}
+RESPONSE { message: "SUCCESS" }
+```
+
+#### Delete transaction
+
+```javascript
+POST "http://localhost:3005/delete-transaction"
+REQUEST {
+    transaction_ID: String
+}
+RESPONSE { message: "SUCCESS" }
+```
+
 ### For Projects
 #### Get all projects of user
 ```javascript

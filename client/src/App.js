@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Style
 import 'bootstrap/dist/css/bootstrap.css';
@@ -18,12 +18,17 @@ function App()
         <Router>
             <div className='App'>
                 <Routes>
+                    {/* TODO Change to transaction */}
+                    <Route exact path="/" element={<Login />} />
+
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/pop-up' element={<Modal />} />
                     <Route path='/report' element={<Report />} />
                     <Route path='/barchart' element={<Barchart />} />
                     <Route path='/piechart' element={<Piechart />} />
+                    <Route path='/project' element={<Project />} />
+                    <Route path='/transaction' element={<Transaction />} />
                 </Routes>
             </div>
         </Router>
