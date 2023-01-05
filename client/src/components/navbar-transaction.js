@@ -48,7 +48,9 @@ export default class NavBar extends Component
 		fetch("http://localhost:3005/add-transaction", {
 			method: "POST",
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ user_ID, amount, category_ID, note, date })
+			body: JSON.stringify({ user_ID, 
+				amount: (this.state.cateData.find(cate => cate._id === category_ID).type === 'income') ? amount : -amount,
+				category_ID, note, date })
 		})
 			.then(response => response.json())
 			.then(data =>

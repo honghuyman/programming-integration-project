@@ -17,13 +17,16 @@ export default class Transaction extends Component
 		document.querySelector('.tab-future').classList.add('hidden');
 		console.log('Click last month tab');
 		
-		fetch('http://localhost:3005/all-transactions/1')
+		fetch('http://localhost:3005/all-transactions/63b039df07258122b58d3b2a')
 			.then((response) => response.json())
 			// .then((data) => console.log(data))
 			.then((json) =>
 			{
+				let date = new Date();
+				date.setMonth(date.getMonth() - 1)
+				let transData = json.filter(tran => tran.date.slice(0, 7) === date.toISOString().slice(0, 7))
 				this.setState({
-					transData: json,
+					transData: transData,
 					DataIsLoaded: true
 				});
 			})
@@ -41,8 +44,10 @@ export default class Transaction extends Component
 			// .then((data) => console.log(data))
 			.then((json) =>
 			{
+				let date = new Date();
+				let transData = json.filter(tran => tran.date.slice(0, 7) === date.toISOString().slice(0, 7))
 				this.setState({
-					transData: json,
+					transData: transData,
 					DataIsLoaded: true
 				});
 			})
@@ -55,13 +60,16 @@ export default class Transaction extends Component
 		document.querySelector('.tab-this-month').classList.add('hidden');
 		console.log('Click future tab');
 
-		fetch('http://localhost:3005/all-transactions/3')
+		fetch('http://localhost:3005/all-transactions/63b039df07258122b58d3b2a')
 			.then((response) => response.json())
 			// .then((data) => console.log(data))
 			.then((json) =>
 			{
+				let date = new Date();
+				date.setMonth(date.getMonth() + 1)
+				let transData = json.filter(tran => tran.date.slice(0, 7) === date.toISOString().slice(0, 7))
 				this.setState({
-					transData: json,
+					transData: transData,
 					DataIsLoaded: true
 				});
 			})
@@ -74,6 +82,10 @@ export default class Transaction extends Component
 		this.state = {
 			transData: []
 		};
+
+		this.clickFutureTab = this.clickFutureTab.bind(this);
+		this.clickThisMonthTab = this.clickThisMonthTab.bind(this);
+		this.clickLastMonthTab = this.clickLastMonthTab.bind(this);
 	}
 
 	componentDidMount()
@@ -86,8 +98,9 @@ export default class Transaction extends Component
 			// .then((data) => console.log(data))
 			.then((json) =>
 			{
+				let transData = json.filter(tran => tran.date.slice(0, 7) === new Date().toISOString().slice(0, 7))
 				this.setState({
-					transData: json
+					transData: transData
 				});
 			})
 	}
