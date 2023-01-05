@@ -1,0 +1,174 @@
+.main {
+    background-color: rgb(224, 228, 229);
+    height: 130%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+.frame {
+    height: 90%;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 1px 1px 10px 10px rgb(203, 201, 201);
+    border-radius: 5px;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+.frame-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 100px 5px 100px;
+    color: grey;
+    font-weight: bold;
+}
+.below-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 125px 10px 150px;
+    border-bottom: 1px solid rgb(173, 170, 170);
+}
+.middle {
+    color: grey;
+    font-weight: bold;
+    text-align: center;
+}
+.below-middle {
+    font-weight: normal;
+    border-bottom: 1px solid rgb(173, 170, 170);
+    text-align: center;
+}
+.inside-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 100px 0px 100px;
+}
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 315px 0px 210px;
+    font-weight: bold;
+    color: grey;
+}
+.container-fluid button{
+    border: none;
+    background-color: #fff;
+}
+.container-fluid button:hover {
+    font-weight: bold;
+    color: rgb(174, 81, 47);
+}
+.main1 {
+    background-color: rgb(174, 81, 47);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.popup1 {
+    height: 90%;
+    width: 90%;
+    background-color: #fff;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+.popup-header1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 0 50px;
+    border-bottom: 1px solid rgb(173, 170, 170);
+}
+.popup-header1 h2 {
+    padding-top: 1%;
+    font-weight: bold;
+}
+.popup-header1:hover{
+    cursor: pointer;
+}
+.apexcharts-toolbar {
+    visibility:hidden;
+}
+
+.date {
+    background-color: aliceblue;
+    margin-left: 5px;
+    border-bottom: ridge;
+}
+
+.reportContainer {
+    height: 90%;
+    background-color: aliceblue;
+    overflow-y: scroll;
+}
+
+.transaction {
+    padding-bottom: 4%;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.transactionContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    padding-top: 0px;
+    box-sizing: border-box;
+}
+
+.spend {
+    color: red;
+    margin-left: 25px;
+    background-color: aliceblue;
+    padding-top: 18px;
+    box-sizing: border-box;
+}
+
+.income {
+    color: green;
+    margin-left: 25px;
+    background-color: aliceblue;
+    margin-top: 4px;
+}
+
+.money {
+    float: right;
+    margin-right: 10px;
+    background-color: aliceblue;
+    text-align: right;
+}
+
+.detail {
+    background-color: darkgray;
+    overflow-y: scroll;
+}
+
+.detailin {
+    border-top: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+    text-align: left;
+}
+
+.detailContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    border-bottom: ridge;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px 0 50px;
+    box-sizing: border-box
+}
+
+h3.spend.money {
+    float: right
+}

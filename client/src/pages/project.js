@@ -56,6 +56,12 @@ export default class Project extends Component
         const user_ID = "63b039df07258122b58d3b2a";
     }
 
+    openFormTrans = () =>
+    {
+        document.querySelector('#form-add-trans').style.display = 'block';
+        document.querySelector('.overlay').classList.toggle('blur');
+    };
+
     openFormCont = (event) =>
     {
         document.querySelector('#form-add-cont').style.display = 'block';
@@ -118,8 +124,7 @@ export default class Project extends Component
         document.querySelector('.tab-this-month').classList.add('hidden');
         console.log('Click future tab');
     };
-
-
+    
     render()
     {
         const { projData } = this.state;
