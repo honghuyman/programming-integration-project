@@ -49,7 +49,7 @@ export default class NavBar extends Component
 			method: "POST",
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ user_ID, 
-				amount: (this.state.cateData.find(cate => cate._id === category_ID).type === 'income') ? amount : -amount,
+				amount: (this.state.cateData.find(cate => cate._id === category_ID).type === 'income') ? Number(amount) : -Number(amount),
 				category_ID, note, date })
 		})
 			.then(response => response.json())
