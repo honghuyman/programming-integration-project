@@ -1,20 +1,68 @@
 import React, { Component } from 'react';
 import '../App.css';
 
+// Style
+import 'bootstrap/dist/css/bootstrap.css';
+
 // Components
 import NavBar from '../components/navbar-project';
 import SideBar from '../components/sideBar';
-import Projects from '../components/projects';
+// import Projects from '../components/projects';
 
 export default class Project extends Component
 {
+    constructor(props)
+    {
+        super(props);
+
+        this.state = { user_ID: "", project_ID: "", money: 0, projData: [], projMember: [] };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    // * Get all project
+    componentDidMount()
+    {
+        // const username = window.localStorage.getItem('userID');
+
+        // TODO Change to username, uncomment the above line
+        fetch('http://localhost:3005/all-projects/example')
+        .then((response) => response.json())
+        .then((json) =>
+        {
+            json = json.map(o => ({...o, members: []}))
+            this.setState({
+                projData: json
+            });
+            console.log(json);
+            for (let project of json) {
+                fetch('http://localhost:3005/all-members/' + project._id)
+                .then((response) => response.json())
+                .then((members) => {
+                    project.members = members
+                    this.setState({
+                        projData: json
+                    })
+                })
+            }
+        })
+    }
+
+    // * Add contribution
+    handleSubmit(e)
+    {
+        e.preventDefault();
+
+        const { project_ID, money } = this.state;
+        const user_ID = "63b039df07258122b58d3b2a";
+    }
+
     openFormTrans = () =>
     {
         document.querySelector('#form-add-trans').style.display = 'block';
         document.querySelector('.overlay').classList.toggle('blur');
     };
 
-    openFormCont = () =>
+    openFormCont = (event) =>
     {
         document.querySelector('#form-add-cont').style.display = 'block';
         document.querySelector('.overlay').classList.toggle('blur');
@@ -23,43 +71,37 @@ export default class Project extends Component
         document.querySelector('#form-input-date').innerHTML = current_date;
     };
 
-    openFormMem = () =>
+    openFormMem = (event) =>
     {
         document.querySelector('#form-add-mem').style.display = 'block';
         document.querySelector('.overlay').classList.toggle('blur');
     };
 
-    openFormProj = () =>
+    openFormProj = (event) =>
     {
         document.querySelector('#form-add-proj').style.display = 'block';
         document.querySelector('.overlay').classList.toggle('blur');
     };
 
-    closeFormTrans = () =>
+    closeFormTrans = (event) =>
     {
         document.querySelector('#form-add-trans').style.display = 'none';
         document.querySelector('.overlay').classList.toggle('blur');
     };
 
-    closeFormCont = () =>
+    closeFormCont = (event) =>
     {
         document.querySelector('#form-add-cont').style.display = 'none';
         document.querySelector('.overlay').classList.toggle('blur');
     };
 
-    closeFormMem = () =>
+    closeFormMem = (event) =>
     {
         document.querySelector('#form-add-mem').style.display = 'none';
         document.querySelector('.overlay').classList.toggle('blur');
     };
 
-    closeFormProj = () =>
-    {
-        document.querySelector('#form-add-proj').style.display = 'none';
-        document.querySelector('.overlay').classList.toggle('blur');
-    };
-
-    clickLastMonthTab = () =>
+    clickLastMonthTab = (event) =>
     {
         document.querySelector('.tab-last-month').classList.toggle('hidden');
         document.querySelector('.tab-this-month').classList.add('hidden');
@@ -67,7 +109,7 @@ export default class Project extends Component
         console.log('Click last month tab');
     };
 
-    clickThisMonthTab = () =>
+    clickThisMonthTab = (event) =>
     {
         document.querySelector('.tab-this-month').classList.toggle('hidden');
         document.querySelector('.tab-last-month').classList.add('hidden');
@@ -75,16 +117,18 @@ export default class Project extends Component
         console.log('Click this month tab');
     };
 
-    clickFutureTab = () =>
+    clickFutureTab = (event) =>
     {
         document.querySelector('.tab-future').classList.toggle('hidden');
         document.querySelector('.tab-last-month').classList.add('hidden');
         document.querySelector('.tab-this-month').classList.add('hidden');
         console.log('Click future tab');
     };
-
+    
     render()
     {
+        const { projData } = this.state;
+
         return (
             <>
                 <SideBar />
@@ -92,171 +136,78 @@ export default class Project extends Component
 
                 <div className="page-container">
                     <div className="box-project">
-                        <div className="project" id="project-1">
-                            <div className="project-title">
-                                <div className="project-name">
-                                    <p>DALAT TOUR</p> {/* data */}
-                                </div>
+                        {
+                            projData.map((proj, index) => (
+                                <div className="project" key={"project-" + index}>
+                                    <div className="project-title">
+                                        <div className="project-name">
+                                            <p>{proj.project_name}</p>
+                                        </div>
 
-                                <div className="project-target">
-                                    <p>
-                                        Target: <span className="project-target-amount">10,000,000 ₫</span>
-                                        {/* put data into span tag */}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="project-detail">
-                                <div className="header">
-                                    <div className="current">
-                                        <p>
-                                            Current total amount: <span className="current-amount">8,000,000 ₫</span>
-                                            {/* put data into span tag */}
-                                        </p>
-                                    </div>
-                                    <div className="icon icon-add-cont" onClick={this.openFormCont}>
-                                        <img src="https://cdn-icons-png.flaticon.com/512/3634/3634526.png" />
-                                    </div>
-                                    <div className="btn" onClick={this.openFormMem}>
-                                        <button className="add-mem">+ MEMBER</button>
-                                    </div>
-                                </div>
-
-                                <div className="member-contribution">
-                                    <div className="contribution-details">
-                                        <p className="date">05-Jan-23</p> {/* data */}
-                                        <p className="username">@username1</p> {/* data */}
-                                        <p className="amount">+ 5,000,000 ₫</p> {/* data */}
-                                    </div>
-                                    <div className="contribution-details">
-                                        <p className="date">05-Jan-23</p> {/* data */}
-                                        <p className="username">@username2</p> {/* data */}
-                                        <p className="amount">+ 2,000,000 ₫</p> {/* data */}
-                                    </div>
-                                    <div className="contribution-details">
-                                        <p className="date">04-Jan-23</p> {/* data */}
-                                        <p className="username">@username1</p> {/* data */}
-                                        <p className="amount">+ 500,000 ₫</p> {/* data */}
-                                    </div>
-                                    <div className="contribution-details">
-                                        <p className="date">03-Jan-23</p> {/* data */}
-                                        <p className="username">@username2</p> {/* data */}
-                                        <p className="amount">+ 500,000 ₫</p> {/* data */}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="project" id="project-2">
-                            <div className="project-title">
-                                <div className="project-name">
-                                    <p>CHOI TET</p> {/* data */}
-                                </div>
-
-                                <div className="project-target">
-                                    <p>
-                                        Target: <span className="project-target-amount">5,000,000 ₫</span>
-                                        {/* put data into span tag */}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="project-detail">
-                                <div className="header">
-                                    <div className="current">
-                                        <p>
-                                            Current total amount: <span className="current-amount">800,000 ₫</span>
-                                            {/* put data into span tag */}
-                                        </p>
+                                        <div className="project-target">
+                                            <p>
+                                                Target: <span className="project-target-amount">{proj.target.toLocaleString('en-US')} ₫</span>
+                                            </p>
+                                        </div>
                                     </div>
 
-                                    <div className="icon icon-add-cont" onClick={this.openFormCont}>
-                                        <img src="https://cdn-icons-png.flaticon.com/512/3634/3634526.png" />
-                                    </div>
-                                    <div className="btn" onClick={this.openFormMem}>
-                                        <button className="add-mem">+ MEMBER</button>
+                                    <div className="project-detail">
+                                        <div className="header">
+                                            <div className="current">
+                                                <p className='text-start pt-3'>
+                                                    Current total amount: <span className={"current-amount " + (proj.reality_money < proj.target ? "text-danger" : "text-success")}>{proj.reality_money.toLocaleString('en-US')} ₫</span>
+                                                </p>
+                                            </div>
+
+                                            {/* TODO get project ID */}
+                                            <div 
+                                                value={proj._id}
+                                                className="icon icon-add-cont mt-2" 
+                                                onClick={this.openFormCont}
+                                            >
+                                                <img src="https://cdn-icons-png.flaticon.com/512/3634/3634526.png" alt='icon' />
+                                            </div>
+
+                                            <div className="btn" onClick={this.openFormMem}>
+                                                <button className="add-mem">+ MEMBER</button>
+                                            </div>
+                                        </div>
+
+                                        {/* * Members */}
+                                        <div className="member-contribution">
+                                            {
+                                                proj.members.map((mem, idx) => (
+                                                    <div className="contribution-details">
+                                                        <p className="username">{mem.username}</p> {/* data */}
+                                                        <p className="privilege">{mem.privilege}</p> {/* data */}
+                                                        <p className="amount">{mem.money?.toLocaleString('en-US')} ₫</p> {/* data */}
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div className="member-contribution">
-                                    <div className="contribution-details">
-                                        <p className="date">07-Jan-23</p> {/* data */}
-                                        <p className="username">@username1</p> {/* data */}
-                                        <p className="amount">+ 150,000 ₫</p> {/* data */}
-                                    </div>
-
-                                    <div className="contribution-details">
-                                        <p className="date">07-Jan-23</p> {/* data */}
-                                        <p className="username">@username2</p> {/* data */}
-                                        <p className="amount">+ 200,000 ₫</p> {/* data */}
-                                    </div>
-
-                                    <div className="contribution-details">
-                                        <p className="date">06-Jan-23</p> {/* data */}
-                                        <p className="username">@username1</p> {/* data */}
-                                        <p className="amount">+ 300,000 ₫</p> {/* data */}
-                                    </div>
-
-                                    <div className="contribution-details">
-                                        <p className="date">06-Jan-23</p> {/* data */}
-                                        <p className="username">@username2</p> {/* data */}
-                                        <p className="amount">+ 150,000 ₫</p> {/* data */}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            ))
+                        }
                     </div>
                 </div>
 
                 <div className="overlay" />
-                <div className="form-popup" id="form-add-trans">
-                    <form action="/" className="form-container">
-                        <div className="form-title">Add transaction</div>
-
-                        <div className="form-input amount">
-                            <p>Amount</p>
-                            <input type="number" placeholder="0" />
-                        </div>
-
-                        <div className="form-input categories">
-                            <p>Category</p>
-                            <select name="categories" id="form-categories">
-                                <option value="All">All</option>
-                                <option value="_1">Category_1</option>
-                                <option value="_2">Category_2</option>
-                                <option value="_3">Category_3</option>
-                            </select>
-                        </div>
-
-                        <div className="form-input date">
-                            <p>Date</p>
-                            <input type="date" />
-                        </div>
-
-                        <div className="form-input note">
-                            <p>Note</p>
-                            <input type="text" autoComplete="true" />
-                        </div>
-
-                        <button className="btn save">SAVE</button>
-                        <button className="btn cancel cancel-trans" onClick={this.closeFormTrans}>
-                            CANCEL
-                        </button>
-                    </form>
-                </div>
-
                 <div className="form-popup" id="form-add-cont">
-                    <form action="/" className="form-container">
-                        <div className="form-title">Add contribution</div>
-                        <div className="form-input date">
-                            <p className="label">Date</p>
-                            <p className="value" id="form-input-date" />
-                        </div>
+                    <form action="/project" onSubmit={this.handleSubmit} className="form-container">
+                        <div className="form-title fw-bold">Add contribution</div>
+
                         <div className="form-input amount">
                             <p className="label">Amount</p>
-                            <input type="number" placeholder="0" />
+                            <input
+                                type="number"
+                                placeholder="0"
+                                onChange={(e) => this.setState({ money: e.target.value })}
+                            />
                         </div>
-                        <button className="btn save save-cont">SAVE</button>
+
+                        <button type="submit" className="btn save save-cont">SAVE</button>
+
                         <button className="btn cancel cancel-cont" onClick={this.closeFormCont}>
                             CANCEL
                         </button>
@@ -264,11 +215,11 @@ export default class Project extends Component
                 </div>
 
                 <div className="form-popup" id="form-add-mem">
-                    <form action="/" className="form-container">
+                    <form action="/project" className="form-container">
                         <div className="form-title">
                             <p>Project Members</p>
                             <div className="icon" onClick={this.closeFormMem}>
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828778.png" />
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828778.png" alt='icon' />
                             </div>
                         </div>
 
@@ -280,7 +231,7 @@ export default class Project extends Component
                             {/* data (loop) */}
                             <div className="member-contribution-details">
                                 <div className="icon delete">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/3964/3964013.png" />
+                                    <img src="https://cdn-icons-png.flaticon.com/512/3964/3964013.png" alt='icon' />
                                 </div>
 
                                 <p className="username">@username1</p> {/* data */}
@@ -289,7 +240,7 @@ export default class Project extends Component
 
                             <div className="member-contribution-details">
                                 <div className="icon delete">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/3964/3964013.png" />
+                                    <img src="https://cdn-icons-png.flaticon.com/512/3964/3964013.png" alt='icon' />
                                 </div>
 
                                 <p className="username">@username2</p> {/* data */}
@@ -299,7 +250,7 @@ export default class Project extends Component
 
                         <div className="new-member">
                             <div className="icon add">
-                                <img src="https://cdn-icons-png.flaticon.com/512/4202/4202259.png" />
+                                <img src="https://cdn-icons-png.flaticon.com/512/4202/4202259.png" alt='icon' />
                             </div>
 
                             <input className="username" type="text" placeholder="Enter username" />
@@ -307,37 +258,6 @@ export default class Project extends Component
                         </div>
 
                         <button className="btn save save-cont">SAVE</button>
-                    </form>
-                </div>
-
-                <div className="form-popup" id="form-add-proj">
-                    <form action="/" className="form-container">
-                        <div className="form-title">Add Project</div>
-
-                        <div className="form-input name">
-                            <p>Name</p>
-                            <input type="text" autoComplete="true" />
-                        </div>
-
-                        <div className="form-input target">
-                            <p>Target</p>
-                            <input type="number" placeholder="0" />
-                        </div>
-
-                        <div className="form-input date">
-                            <p>Start date</p>
-                            <input type="date" />
-                        </div>
-
-                        <div className="form-input date">
-                            <p>End date</p>
-                            <input type="date" />
-                        </div>
-
-                        <button className="btn save">SAVE</button>
-                        <button className="btn cancel cancel-proj" onClick={this.closeFormProj}>
-                            CANCEL
-                        </button>
                     </form>
                 </div>
             </>
