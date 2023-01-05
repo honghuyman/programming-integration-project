@@ -23,7 +23,7 @@ export default class Transaction extends Component
 			.then((json) =>
 			{
 				let date = new Date();
-				date.setMonth(date.getMonth() - 1)
+				date.setMonth(date.getMonth() - 1, 1)
 				let transData = json.filter(tran => tran.date.slice(0, 7) === date.toISOString().slice(0, 7))
 				this.setState({
 					transData: transData,
@@ -66,7 +66,7 @@ export default class Transaction extends Component
 			.then((json) =>
 			{
 				let date = new Date();
-				date.setMonth(date.getMonth() + 1)
+				date.setMonth(date.getMonth() + 1, 1)
 				let transData = json.filter(tran => tran.date.slice(0, 7) === date.toISOString().slice(0, 7))
 				this.setState({
 					transData: transData,
