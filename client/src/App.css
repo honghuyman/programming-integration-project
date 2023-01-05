@@ -46,7 +46,7 @@ body {
 }
 
 div.page-container {
-    /* overflow: hidden; */
+    overflow: hidden;
     background-color: gainsboro;
 }
 
@@ -60,7 +60,6 @@ div.side-bar {
     min-height: 100vh;      /* 100% */
     height: auto;
     float: left;
-    overflow: auto;
     border-color: gainsboro;
     border-width: 2px;
     border-style: solid;

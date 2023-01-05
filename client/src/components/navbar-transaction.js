@@ -181,7 +181,7 @@ export default class NavBar extends Component
 							</select>
 						</div>
 
-						<div className="form-input date">
+						<div className="form-input">
 							<span>Date </span>
 							<span className='text-danger'>*</span>
 							<input
