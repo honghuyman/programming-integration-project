@@ -63,7 +63,7 @@ export default class NavBar extends Component
 				}
 
 				// TODO Check again
-				// window.location.href = "/transaction";
+				window.location.href = "/transaction";
 			})
 	}
 
@@ -81,11 +81,14 @@ export default class NavBar extends Component
 		document.querySelector('.overlay').classList.toggle('disable');
 		console.log('Close form');
 		console.log(document.querySelector('.overlay').classList);
+		window.location.href = "/transaction";
 	};
 
 	render()
 	{
 		const { cateData, balance } = this.state;
+		const bl = balance.account_balance?.toLocaleString('en-US');
+
 		return (
 
 			<>
@@ -96,7 +99,7 @@ export default class NavBar extends Component
 
 					<div className="my-wallet-text">
 						<p className="fw-bold text-start wallet-label">My Wallet</p>
-						<p id="wallet-balance">{balance.account_balance} đ</p>
+						<p id="wallet-balance" className={balance.account_balance > 0 ? "text-success" : "text-danger"}>{bl} đ</p>
 					</div>
 
 					{/* Search bar */}

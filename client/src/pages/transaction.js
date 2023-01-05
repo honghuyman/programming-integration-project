@@ -199,7 +199,7 @@ export default class Transaction extends Component
 										</div>
 
 										<div className="day-balance">
-											<p className="balance">{trans.sum} đ</p>
+											<p className="balance">{trans.sum.toLocaleString('en-US')} đ</p>
 										</div>
 									</div>
 									{
