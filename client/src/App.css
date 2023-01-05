@@ -46,7 +46,7 @@ body {
 }
 
 div.page-container {
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: gainsboro;
 }
 

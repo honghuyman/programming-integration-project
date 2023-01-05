@@ -98,7 +98,7 @@ export default class NavBar extends Component
                             />
                         </div>
 
-                        <div className="form-input date">
+                        <div className="form-input">
                             <p>Start date</p>
                             <input 
                                 type="date" 
@@ -106,7 +106,7 @@ export default class NavBar extends Component
                             />
                         </div>
 
-                        <div className="form-input date">
+                        <div className="form-input">
                             <p>End date</p>
                             <input 
                                 type="date" 
