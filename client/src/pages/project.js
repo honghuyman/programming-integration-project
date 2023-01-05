@@ -141,7 +141,7 @@ export default class Project extends Component
                                 <div className="project" key={"project-" + index}>
                                     <div className="project-title">
                                         <div className="project-name">
-                                            <p>{proj.project_name}</p>
+                                            <p className='text-uppercase'>{proj.project_name}</p>
                                         </div>
 
                                         <div className="project-target">
