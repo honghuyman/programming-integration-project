@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import logo from './logo.svg';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
-function App() {
+function App-Project() {
 	const openFormTrans = (event) => {
 		document.querySelector('#form-add-trans').style.display = 'block';
 		document.querySelector('.overlay').classList.toggle('blur');
@@ -340,6 +340,32 @@ function App() {
 			</div>
 		</div>
 	);
+
+// Pages
+import Login from './pages/login';
+import Register from './pages/register';
+import Project from './pages/project';
+import NewProject from './pages/new-project';
+import Transaction from './pages/transaction';
+
+function App()
+{
+    return (
+        <Router>
+            <div className='App'>
+                <Routes>
+                    {/* TODO Change to transaction */}
+                    <Route exact path="/" element={<Transaction />} />
+
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/project' element={<Project />} />
+                    <Route path='/project/new-project' element={<NewProject />} />
+                    <Route path='/transaction' element={<Transaction />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
