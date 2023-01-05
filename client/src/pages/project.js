@@ -147,7 +147,7 @@ export default class Project extends Component
                                             <div 
                                                 value={proj._id}
                                                 className="icon icon-add-cont mt-2" 
-                                                onClick={(e) => this.projID_openFormCont(e)}
+                                                onClick={this.openFormCont}
                                             >
                                                 <img src="https://cdn-icons-png.flaticon.com/512/3634/3634526.png" alt='icon' />
                                             </div>
