@@ -26,14 +26,25 @@ export default class Project extends Component
 
         // TODO Change to username, uncomment the above line
         fetch('http://localhost:3005/all-projects/example')
-            .then((response) => response.json())
-            .then((json) =>
-            {
-                this.setState({
-                    projData: json
-                });
-                console.log(json);
-            })
+        .then((response) => response.json())
+        .then((json) =>
+        {
+            json = json.map(o => ({...o, members: []}))
+            this.setState({
+                projData: json
+            });
+            console.log(json);
+            for (let project of json) {
+                fetch('http://localhost:3005/all-members/' + project._id)
+                .then((response) => response.json())
+                .then((members) => {
+                    project.members = members
+                    this.setState({
+                        projData: json
+                    })
+                })
+            }
+        })
     }
 
     // * Add contribution
@@ -111,7 +122,7 @@ export default class Project extends Component
 
     render()
     {
-        const { projData, projMember } = this.state;
+        const { projData } = this.state;
 
         return (
             <>
@@ -160,10 +171,10 @@ export default class Project extends Component
                                         {/* * Members */}
                                         <div className="member-contribution">
                                             {
-                                                projMember.map((mem, idx) => (
+                                                proj.members.map((mem, idx) => (
                                                     <div className="contribution-details">
                                                         <p className="username">{mem.username}</p> {/* data */}
-                                                        <p className="privilege">{mem.priviledge}</p> {/* data */}
+                                                        <p className="privilege">{mem.privilege}</p> {/* data */}
                                                         <p className="amount">{mem.money?.toLocaleString('en-US')} ₫</p> {/* data */}
                                                     </div>
                                                 ))
