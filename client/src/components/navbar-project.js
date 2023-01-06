@@ -26,6 +26,12 @@ export default class NavBar extends Component
         const { project_name, target, start_date, end_date } = this.state;
         const manager_id = "63b039df07258122b58d3b2a";
 
+        if (project_name === "" || target === 0 || target === "" || start_date === "" || end_date === "")
+        {
+            this.closeFormProj();
+            return;
+        }
+
         fetch("http://localhost:3005/new-project", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
