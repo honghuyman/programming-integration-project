@@ -5,8 +5,9 @@ import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 // Components
-import NavBar from '../components/navbar-transaction';
-import SideBar from '../components/sideBar';
+import NavBar from '../Components/navbar-transaction';
+import SideBar from '../Components/sideBar';
+import SearchBar from '../Components/searchBar';
 
 export default class Transaction extends Component
 {
@@ -23,7 +24,7 @@ export default class Transaction extends Component
 			.then((json) =>
 			{
 				let date = new Date();
-				date.setMonth(date.getMonth() - 1)
+				date.setMonth(date.getMonth() - 1, 1)
 				let transData = json.filter(tran => tran.date.slice(0, 7) === date.toISOString().slice(0, 7))
 				this.setState({
 					transData: transData,
@@ -66,7 +67,7 @@ export default class Transaction extends Component
 			.then((json) =>
 			{
 				let date = new Date();
-				date.setMonth(date.getMonth() + 1)
+				date.setMonth(date.getMonth() + 1, 1)
 				let transData = json.filter(tran => tran.date.slice(0, 7) === date.toISOString().slice(0, 7))
 				this.setState({
 					transData: transData,
@@ -143,85 +144,89 @@ export default class Transaction extends Component
 
 		return (
 			<>
-				<SideBar />
-				<NavBar />
+				{/* <SideBar />
+				<NavBar /> */}
 
-				<div className="box-transaction">
-					<div className="tab">
-						<div to='last-month' className="tab-last-month hidden" onClick={this.clickLastMonthTab}>
-							LAST MONTH
+				<div className="page-container">
+					<SideBar />
+					<NavBar />
+					<SearchBar/>
+
+					<div className="box-transaction">
+						<div className="tab">
+							<div to='last-month' className="tab-last-month hidden" onClick={this.clickLastMonthTab}>
+								LAST MONTH
+							</div>
+
+							<div to='this-month' className="tab-this-month" onClick={this.clickThisMonthTab}>
+								THIS MONTH
+							</div>
+
+							<div to='next-month' className="tab-future hidden" onClick={this.clickFutureTab}>
+								NEXT MONTH
+							</div>
+						</div>
+					
+						<div className="period-summary">
+							<div className="inflow">
+								<p className="label">Inflow</p>
+								<p className="balance">{sumIn.toLocaleString('en-US')} đ</p>
+							</div>
+
+							<div className="outflow">
+								<p className="label">Outflow</p>
+								<p className="balance">{(sumOut !== 0 ? sumOut * -1 : 0).toLocaleString('en-US')} ₫</p>
+							</div>
+
+							<div className="hr">
+								<hr />
+							</div>
+							<div className="total">
+								<p className="balance">{(sumIn + sumOut).toLocaleString('en-US')} ₫</p>
+							</div>
 						</div>
 
-						<div to='this-month' className="tab-this-month" onClick={this.clickThisMonthTab}>
-							THIS MONTH
-						</div>
+						<div className="space" />
 
-						<div to='next-month' className="tab-future hidden" onClick={this.clickFutureTab}>
-							NEXT MONTH
-						</div>
-					</div>
-				</div>
+						<div className="daily-summary">
+							{
+								transData.map((trans, index) => (
+									<div className="daily" id="day" key={index}>
+										<div className="balance-by-day">
+											<div className="day-description-1">
+												<p className="day">{trans.date[8] + trans.date[9]}</p>
+											</div>
 
-				<div className='box-transaction'>
-					<div className="period-summary">
-						<div className="inflow">
-							<p className="label">Inflow</p>
-							<p className="balance">{sumIn.toLocaleString('en-US')} đ</p>
-						</div>
+											<div className="day-description-2">
+												<p className="day-of-week">{trans.weekday}</p>
+												<p className="text-start month-year">{trans.month_year}</p>
+											</div>
 
-						<div className="outflow">
-							<p className="label">Outflow</p>
-							<p className="balance">{(sumOut !== 0 ? sumOut * -1 : 0).toLocaleString('en-US')} ₫</p>
-						</div>
-
-						<div className="hr">
-							<hr />
-						</div>
-						<div className="total">
-							<p className="balance">{(sumIn + sumOut).toLocaleString('en-US')} ₫</p>
-						</div>
-					</div>
-
-					<div className="space" />
-
-					<div className="daily-summary">
-						{
-							transData.map((trans, index) => (
-								<div className="daily" id="day" key={index}>
-									<div className="balance-by-day">
-										<div className="day-description-1">
-											<p className="day">{trans.date[8] + trans.date[9]}</p>
+											<div className="day-balance">
+												<p className="balance">{trans.sum.toLocaleString('en-US')} đ</p>
+											</div>
 										</div>
+										{
+											trans.transactions.map((tran) => (
+												<div className="balance-by-category">
+													<div className="balance-detail category">
+														<div className="label">
+															{/* TODO Img makes text disappear */}
+															{/* <img src="https://cdn-icons-png.flaticon.com/512/9118/9118242.png" alt='icon'/> */}
+															<p className='fw-bold'>{tran.category_ID.name}</p>
+														</div>
 
-										<div className="day-description-2">
-											<p className="day-of-week">{trans.weekday}</p>
-											<p className="text-start month-year">{trans.month_year}</p>
-										</div>
-
-										<div className="day-balance">
-											<p className="balance">{trans.sum.toLocaleString('en-US')} đ</p>
-										</div>
-									</div>
-									{
-										trans.transactions.map((tran) => (
-											<div className="balance-by-category">
-												<div className="balance-detail category">
-													<div className="label">
-														{/* TODO Img makes text disappear */}
-														{/* <img src="https://cdn-icons-png.flaticon.com/512/9118/9118242.png" alt='icon'/> */}
-														<p className='fw-bold'>{tran.category_ID.name}</p>
-													</div>
-
-													<div className="balance">
-														<p className={(tran.amount < 0 ? "negative" : "positive") + " fw-bold"}>{tran.amount.toLocaleString('en-US')} đ</p>
+														<div className="balance">
+															<p className={(tran.amount < 0 ? "negative" : "positive") + " fw-bold"}>{tran.amount.toLocaleString('en-US')} đ</p>
+														</div>
 													</div>
 												</div>
-											</div>
-										))
-									}
-								</div>
-							))
-						}
+											))
+										}
+									</div>
+								))
+							}
+						</div>
 					</div>
 				</div>
 			</>

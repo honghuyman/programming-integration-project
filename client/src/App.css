@@ -21,555 +21,185 @@
 /* * Tran.css */
 
 :root {
-    --bar-width: 8%;
-    --bar-height: 80px;
+    --bar-width: 7%;
+    --bar-height: 85px;
     --search-box-height: 80px;
     --center-box-padding: 8%;
     --center-box-size: 550px;
     --icon-size: 45px;
     --category-icon-size: 35px;
     --transaction-height: 70px;
-    --page-height: 2000px;      /* 1000px */
+    --normal-line-height: 60px;
+    --memList-height: 500px;
+    --page-height: 2000px;
     --side-bar-margin-top-bottom: 70px;
     --side-bar-padding: 10px;
-}
-
-html {
-    height: 100vh;
-}
-
-body {
+    }
+    
+    body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;
-}
-
-div.page-container {
-    /* overflow: hidden; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    div.page-container {
+    overflow: hidden;
     background-color: gainsboro;
-}
-
-.cusLink {
-    color: white;
-}
-
-/* Side bar */
-div.side-bar {
+    }
+    
+    /* side bar */
+    div.side-bar {
     width: var(--bar-width);
-    min-height: 100vh;      /* 100% */
-    height: auto;
-    float: left;
-    overflow: auto;
+    height: 100%;
+    float:left;
     border-color: gainsboro;
     border-width: 2px;
     border-style: solid;
     background-color: rgb(255, 255, 255);
-}
-
-div.side-bar div {
+    }
+    
+    div.side-bar div {
     text-align: center;
-}
-
-div.side-bar div.icon {
+    }
+    
+    div.side-bar div.icon {
     margin-bottom: var(--side-bar-margin-top-bottom);
     padding-top: var(--side-bar-padding);
     cursor: pointer;
-}
-
-div.side-bar div.icon:hover {
+    }
+    
+    div.side-bar div.icon:hover {
     background-color: gainsboro;
-}
-
-div.side-bar div.icon img {
+    }
+    
+    div.side-bar div.icon img {
     height: var(--icon-size);
-}
-
-div.side-bar div.icon p {
+    }
+    
+    div.side-bar div.icon p {
     padding-bottom: var(--side-bar-padding);
-}
-
-div.side-bar div.icon.icon-menu {
+    }
+    
+    div.side-bar div.icon.icon-menu {
     margin-top: 0px;
     padding-bottom: 10px;
     padding-bottom: 12px;
-}
-
-div.side-bar div.icon.icon-trans,
-div.side-bar div.icon.icon-report {
+    }
+    
+    div.side-bar div.icon.icon-trans,
+    div.side-bar div.icon.icon-report {
     margin-top: var(--side-bar-margin-top-bottom);
-}
-
-div.side-bar div.icon.icon-project {
+    }
+    
+    div.side-bar div.icon.icon-project {
     margin-bottom: var(--page-height);
-}
-
-
-/* Nav bar */
-div.nav-bar {
+    }
+    
+    
+    /* Nav bar */
+    div.nav-bar {
     width: calc(100% - var(--bar-width));
-    height: var(--bar-height);  /* 80px */
-    float: left;
+    height: var(--bar-height);
+    float:left;
     border-color: gainsboro;
     border-width: 2px;
-    border-style: solid none;
+    border-style: solid;
     background-color: rgb(255, 255, 255);
-}
-
-div.nav-bar div.icon img {
+    }
+    
+    div.nav-bar div.icon img {
     margin-top: 10px;
     margin-bottom: 10px;
     height: var(--icon-size);
-}
-
-div.icon-my-wallet {
-    float: left;
+    }
+    
+    div.icon-my-wallet {
+    float:left;
     margin-left: 20px;
-}
-
-div.my-wallet-text {
-    float: left;
+    }
+    
+    div.my-wallet-text {
+    float:left;
     margin-left: 10px;
-}
-
-div.my-wallet-text p.wallet-label {
+    }
+    
+    div.my-wallet-text p.wallet-label {
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 0;
-}
-
-div.my-wallet-text p#wallet-balance {
+    }
+    
+    div.my-wallet-text p#wallet-balance {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 0;
-}
-
-div.right-btn {
-    float: right;
+    }
+    
+    div.right-btn {
+    float:right;
     margin-right: 20px;
     margin-top: 15px;
     box-shadow: 4px 4px 8px #8888888b;
-}
-
-div.right-btn button {
+    }
+    
+    div.right-btn button {
     border-width: 0;
     border-radius: 0;
-    color: rgb(255, 255, 255)
-}
-
-div.right-btn .btn.add-trans {
+    color:rgb(255, 255, 255);
+    }
+    
+    div.right-btn .btn.add-trans {
     background-color: #FFE601;
-    color: black;   /* none */
+    color: black;
     font-weight: bold;
-}
-
-div.right-btn .btn.add-trans:hover {
-    background-color: aquamarine;
+    }
+    
+    div.right-btn .btn.add-trans:hover {
+    background-color:aquamarine;
     font-weight: bold;
-}
-
-div.right-btn .btn.project {
+    }
+    
+    div.right-btn .btn.project {
     background-color: #457cff;
     font-weight: bold;
-}
-
-div.right-btn .btn.project:hover {
-    background-color: aquamarine;
+    }
+    
+    div.right-btn .btn.project:hover {
+    background-color:aquamarine;
     font-weight: bold;
-}
-
-/* Search bar */
-div.search-bar {
-    /* width: calc(100% - var(--bar-width));
-    height: 120px;  /* 125px */
-    /* float: left;
+    }
+    
+    /* Search bar */
+    div.search-bar {
+    width: calc(100% - var(--bar-width));
+    height: var(--bar-height);
+    float:left;
     border-color: gainsboro;
     border-width: 2px;
     border-style: solid;
     background-color: rgb(255, 255, 255);
-    padding: 10px 0px; */
-}
-
-div.search-bar .search-input {
-    height: var(--search-box-height);   /* 100px */
-    float: left;
-    border-color: rgb(190, 190, 190);
-    border-width: 2px;
-    border-style: solid;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    align-items: center;
-    width: 200px;   /* 250px */
-}
-
-div.search-bar .search-input p {
-    margin: 5px 0px 5px 10px;
-    font-size: 16px;
-}
-
-div.search-bar .search-input input,
-div.search-bar .search-input select {
-    border-color: aliceblue;
-    border-width: 3px;
-    border-radius: 5px;
-    margin-top: 5px;
-    font-size: 16px;
-    height: 40%;        /* 40px */
-    width: 100%;
-}
-
-div.search-bar .search-input select {
-    border-color: rgb(204, 218, 228);
-}
-
-div.search-bar .search-input.amount {
-    margin-left: 10px;
-}
-
-div.search-bar div.icon {
-    height: 100%;
-    display: flex;
-}
-
-div.search-bar div.icon img {
-    height: calc(0.75 * var(--icon-size));  /* 1.25 */
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 20%;
-    cursor: pointer;
-}
-
-/* Box transaction */
-div.box-transaction {
-    width: var(--center-box-size);
-    margin: 0px auto;
-    background-color: rgb(255, 255, 255);
-}
-
-/* Box transaction tab (LAST MONTH/THIS MONTH/FUTURE) */
-div.box-transaction div.tab {
-    height: 60px;
-    border-color: gainsboro;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
-    display: flex;
-}
-
-div.box-transaction div.tab .tab-last-month,
-div.box-transaction div.tab .tab-this-month,
-div.box-transaction div.tab .tab-future {
-    float: left;
-    width: 33%;
-    text-align: center;
-    margin: auto;
-    height: 100%;
-    padding-top: 10px;
-    border-bottom: #2DB84C;
-    border-top: white;
-    border-left: white;
-    border-right: white;
-    border-width: 5px;
-    border-style: solid;
-    text-decoration: none;
-    color: black;
-}
-
-div.box-transaction div.tab .tab-last-month.hidden,
-div.box-transaction div.tab .tab-this-month.hidden,
-div.box-transaction div.tab .tab-future.hidden {
-    border-bottom: white;
-    border-top: white;
-    border-left: white;
-    border-right: white;
-    border-width: 0;
-    cursor: pointer;
-}
-
-div.box-transaction div.tab .tab-last-month:hover,
-div.box-transaction div.tab .tab-this-month:hover,
-div.box-transaction div.tab .tab-future:hover {
-    font-weight: bold;
-    border-bottom: #2DB84C;
-    border-top: white;
-    border-left: white;
-    border-right: white;
-    border-width: 5px;
-    border-style: solid;
-    cursor: pointer;
-}
-
-/* Box transaction period summary (Inflow/Outflow/HR/Total) */
-div.box-transaction div.period-summary {
-    height: 170px;
-    border-color: gainsboro;
-    border-width: 2px;
-    border-style: solid;
-    padding-top: 20px;
-}
-
-div.box-transaction div.period-summary div.inflow,
-div.box-transaction div.period-summary div.outflow {
-    overflow: hidden;
-}
-
-div.box-transaction div.period-summary div.inflow .label,
-div.box-transaction div.period-summary div.outflow .label {
-    float: left;
-    width: calc(100%-2*var(--center-box-padding));
-    padding-left: var(--center-box-padding);
-}
-
-div.box-transaction div.period-summary div.inflow p.balance,
-div.box-transaction div.period-summary div.outflow p.balance {
-    float: right;
-    width: 40%;
-    text-align: right;
-    padding-right: var(--center-box-padding);
-    font-weight: bold;
-}
-
-div.box-transaction div.period-summary div.inflow p.balance {
-    color: #2DB84C;
-}
-
-div.box-transaction div.period-summary div.outflow p.balance {
-    color: red;
-}
-
-div.box-transaction div.period-summary div.hr {
-    width: 100%;
-    height: 20px;
-}
-
-div.box-transaction div.period-summary div.hr hr {
-    width: 30%;
-    margin: 0;
-    margin-right: var(--center-box-padding);
-    float: right;
-    border-width: 1.5px;
-    border-style: solid;
-}
-
-div.box-transaction div.period-summary div.total {
-    width: 100%;
-    float: right;
-    text-align: right;
-    padding-right: var(--center-box-padding);
-}
-
-div.box-transaction div.period-summary div.total p.balance {
-    font-weight: bold;
-}
-
-/* Box transaction space between 2 divs */
-div.box-transaction div.space {
-    height: 50px;
-    background-color: #F4F4F4;
-    border-color: gainsboro;
-    border-width: 0 2px 0 2px;
-    border-style: solid;
-}
-
-/* Box transaction daily summary */
-div.box-transaction div.daily-summary div.daily {
-    border-color: gainsboro;
-    border-width: 2px;
-    border-style: solid;
-    /* border-radius: 0 0 10px 10px; */
-}
-
-/* Box transaction daily summary's balance by day */
-div.box-transaction div.daily-summary div.daily div.balance-by-day {
-    overflow: hidden;
-    height: var(--transaction-height);
-    border-color: gainsboro;
-    border-width: 0 0 2px 0;
-    border-style: solid;
-}
-
-div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-1 {
-    float: left;
-    width: 10%;
-    display: flex;
-    height: 100%;
-    margin-left: var(--center-box-padding);
-}
-
-div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-1 p.day {
-    font-size: 35px;
-    font-weight: bold;
-    margin-top: auto;
-    margin-bottom: auto;
-    text-align: center;
-}
-
-div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-2 {
-    float: left;
-    width: 30%;
-    height: 100%;
-}
-
-div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-2 p.day-of-week {
-    padding-top: 10px;
-    margin-bottom: 0;
-    text-align: left;
-}
-
-div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-2 p.month-year {
-    font-size: 14px;
-    font-weight: lighter;
-    margin-bottom: 0;
-}
-
-div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-balance {
-    float: right;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    text-align: right;
-    padding-right: var(--center-box-padding);
-}
-
-div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-balance p.balance {
-    width: 100%;
-    margin-top: auto;
-    margin-bottom: auto;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-/* Box transaction daily summary's balance by category */
-div.balance-by-category div.balance-detail {
-    overflow: hidden;
-    height: var(--transaction-height);
-    border-color: gainsboro;
-    border-width: 0 0 2px 0;
-    border-style: solid;
-    margin-left: var(--center-box-padding);
-}
-
-div.balance-by-category div.balance-detail div.label {
-    width: 30%;
-    margin: 0;
-}
-
-div.balance-by-category div.balance-detail div.label img {
-    float: left;
-    height: var(--category-icon-size);
-    border-radius: 50%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-color: black;
-    border-width: 2px;
-    border-style: solid;
-}
-
-div.balance-by-category div.balance-detail div.label p {
-    float: left;
-    height: var(--category-icon-size);
-    /* margin-left: 20px;  */
-    margin-top: 25px;
-}
-
-div.balance-by-category div.balance-detail div.balance {
-    float: right;
-    height: 100%;
-    display: flex;
-    text-align: right;
-    padding-right: var(--center-box-padding);
-}
-
-div.balance-by-category div.balance-detail div.balance p {
-    width: 100%;
-    margin-right: 5px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-div.balance-by-category div.balance-detail div.balance p.negative {
-    color: red;
-}
-
-div.balance-by-category div.balance-detail div.balance p.positive {
-    color: #2DB84C;
-}
-
-/* Blur background */
-.overlay {
-    filter: blur(0px);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    visibility: hidden;
-}
-
-.overlay.blur {
-    background-color: rgba(220, 220, 220, 0.7);
-    filter: blur(10px);
-    visibility: visible;
-}
-
-/* Popup Add Transaction Form*/
-div.form-popup {
-    border-radius: 2%;
-    /*display: none;*/
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-color: gainsboro;
-    border-width: 2px;
-    border-style: solid;
-    box-shadow: 4px 4px 8px #8888888b;
-}
-
-#form-add-trans {
-    display: none;
-}
-
-div.form-popup form.form-container {
-    width: calc(var(--center-box-size) + 115px);
-    height: 280px;
-    padding: 10px;
-    background-color: white;
-}
-
-div.form-popup form.form-container div.title-add-trans {
-    width: 100%;
-    font-weight: bold;
-    padding: 10px;
-    overflow: hidden;
-    border-color: gainsboro;
-    border-width: 0 0 2px 0;
-    border-style: solid;
-}
-
-div.form-popup form.form-container div.form-input {
+    }
+    
+    div.search-bar .search-input {
     height: var(--search-box-height);
-    float: left;
-    text-align: left;
-    font-weight: bold;
+    float:left;
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 10px;
     align-items: center;
     width: 200px;
-}
-
-div.form-popup form.form-container .form-input p {
+    }
+    
+    div.search-bar .search-input p {
     margin-bottom: 0;
     margin-top: 5px;
     margin-left: 10px;
     font-size: 16px;
-}
-
-div.form-popup form.form-container .form-input input,
-div.form-popup form.form-container .form-input select {
+    }
+    
+    div.search-bar .search-input input,
+    div.search-bar .search-input select {
     border-color: aliceblue;
     border-width: 3px;
     border-radius: 5px;
@@ -579,64 +209,438 @@ div.form-popup form.form-container .form-input select {
     font-size: 16px;
     height: 40%;
     width: 100%;
-}
-
-div.form-popup form.form-container div.form-input.note {
-    width: 380px;
-}
-
-div.form-popup form.form-container .btn {
-    margin-top: 10px;
+    }
+    
+    div.search-bar .search-input select {
+    border-color:  rgb(204, 218, 228);
+    }
+    
+    div.search-bar .search-input.amount {
+    margin-left: 10%;
+    }
+    
+    div.search-bar div.icon {
+    height: 100%;
+    display:flex;
+    }
+    
+    div.search-bar div.icon img {
+    height: calc(0.75*var(--icon-size));
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20%;
+    cursor: pointer;
+    }
+    
+    /* Box transaction */
+    div.box-transaction {
+    width: var(--center-box-size);
+    margin: 0 auto;
+    margin-top: 15%;
+    border-color: gainsboro;
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 4px 8px #8888888b;
+    }
+    
+    /* Box transaction tab (LAST MONTH/THIS MONTH/FUTURE) */
+    div.box-transaction div.tab {
+    height: 60px;
+    border-color: gainsboro;
+    border-width: 2px;
+    border-style: solid;
+    overflow: hidden;
+    display: flex;
+    }
+    
+    div.box-transaction div.tab div.tab-last-month,
+    div.box-transaction div.tab div.tab-this-month,
+    div.box-transaction div.tab div.tab-future {
+    float: left;
+    width: 33%;
+    text-align: center;
+    margin: auto;
+    height: 100%;
+    padding-top: 10px;
+    border-bottom: chartreuse;
+    border-top: white;
+    border-left: white;
+    border-right: white;
+    border-width: 5px;
+    border-style: solid;
+    }
+    
+    div.box-transaction div.tab div.tab-last-month.hidden,
+    div.box-transaction div.tab div.tab-this-month.hidden,
+    div.box-transaction div.tab div.tab-future.hidden {
+    border-bottom: white;
+    border-top: white;
+    border-left: white;
+    border-right: white;
+    border-width: 0;
+    cursor: pointer;
+    }
+    
+    div.box-transaction div.tab div.tab-last-month:hover,
+    div.box-transaction div.tab div.tab-this-month:hover,
+    div.box-transaction div.tab div.tab-future:hover {
+    font-weight: bold;
+    border-bottom: chartreuse;
+    border-top: white;
+    border-left: white;
+    border-right: white;
+    border-width: 5px;
+    border-style: solid;
+    cursor: pointer;
+    }
+    
+    /* Box transaction period summary (Inflow/Outflow/HR/Total) */
+    div.box-transaction div.period-summary {
+    height: 170px;
+    border-color: gainsboro;
+    border-width: 2px;
+    border-style: solid;
+    padding-top: 20px;
+    }
+    
+    div.box-transaction div.period-summary div.inflow,
+    div.box-transaction div.period-summary div.outflow {
+    overflow: hidden;
+    }
+    
+    div.box-transaction div.period-summary div.inflow .label,
+    div.box-transaction div.period-summary div.outflow .label {
+    float: left;
+    width: calc(100%-2*var(--center-box-padding));
+    padding-left: var(--center-box-padding);
+    }
+    
+    div.box-transaction div.period-summary div.inflow p.balance,
+    div.box-transaction div.period-summary div.outflow p.balance {
     float: right;
+    width: 40%;
+    text-align: right;
+    padding-right: var(--center-box-padding);
+    font-weight: bold;
+    }
+    
+    div.box-transaction div.period-summary div.inflow p.balance {
+    color:limegreen;
+    }
+    
+    div.box-transaction div.period-summary div.outflow p.balance {
+    color: red;
+    }
+    
+    div.box-transaction div.period-summary div.hr {
+    width: 100%;
+    height: 20px;
+    }
+    
+    div.box-transaction div.period-summary div.hr hr {
+    width: 30%;
+    margin: 0;
+    margin-right: var(--center-box-padding);
+    float: right;
+    border-width: 1.5px;
+    border-style: solid;
+    }
+    
+    div.box-transaction div.period-summary div.total {
+    width: 100%;
+    float: right;
+    text-align: right;
+    padding-right: var(--center-box-padding);
+    }
+    
+    div.box-transaction div.period-summary div.total p.balance {
+    font-weight: bold;
+    }
+    
+    /* Box transaction space between 2 divs */
+    div.box-transaction div.space {
+    height: 50px;
+    background-color:#F4F4F4;
+    border-color: gainsboro;
+    border-width: 0 2px 0 2px;
+    border-style: solid;
+    }
+    
+    /* Box transaction daily summary */
+    div.box-transaction div.daily-summary div.daily {
+    border-color: gainsboro;
+    border-width: 2px;
+    border-style: solid;
+    }
+    
+    /* Box transaction daily summary's balance by day */
+    div.box-transaction div.daily-summary div.daily div.balance-by-day {
+    overflow: hidden;
+    height: var(--transaction-height);
+    border-color: gainsboro;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-1 {
+    float: left;
+    width: 10%;
+    display:flex;
+    height: 100%;
+    margin-left: var(--center-box-padding);
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-1 p.day {
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-2 {
+    float: left;
+    width: 30%;
+    height: 100%;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-2 p.day-of-week {
+    padding-top: 10px;
+    margin-bottom: 0;
+    text-align: left;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-description-2 p.month-year {
+    font-size: 14px;
+    font-weight: lighter;
+    margin-bottom: 0;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-balance {
+        float: right;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        text-align: right;
+        padding-right: var(--center-box-padding);
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-day div.day-balance p.balance {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: bold;
+    font-size: 20px;
+    }
+    
+    /* Box transaction daily summary's balance by category */
+    div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail {
+    overflow: hidden;
+    height: var(--transaction-height);
+    border-color: gainsboro;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    margin-left: var(--center-box-padding);
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.label {
+    width: 30%;
+    margin: 0;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.label img {
+    float: left;
+    height: var(--category-icon-size);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.label p {
+    float: left;
+    height: var(--category-icon-size);
+    margin-left: 20px;
+    margin-top: 25px;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance {
+    float: right;
+    height: 100%;
+    display: flex;
+    text-align: right;
+    padding-right: var(--center-box-padding);
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p {
+    width: 100%;
+    margin-right: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p.negative {
+    color: red;
+    }
+    
+    div.box-transaction div.daily-summary div.daily div.balance-by-category div.balance-detail div.balance p.positive {
+    color: limegreen;
+    }
+    
+    
+    /* Blur background */
+    .overlay {
+    filter: blur(0px);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    visibility: hidden;
+    }
+    
+    .overlay.blur {
+    background-color: rgba(220, 220, 220, 0.7);
+    filter: blur(10px);
+    visibility: visible;
+    }
+    
+    /* Popup Add Transaction Form*/
+    div.form-popup {
+    border-radius: 2%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-color: gainsboro;
+    border-width: 2px;
+    border-style: solid;
+    box-shadow: 4px 4px 8px #8888888b;
+    }
+    #form-add-trans {
+        display: none;
+        width: calc(1.5*var(--center-box-size));
+        height: fit-content;
+    }
+    div.form-popup form.form-container {
+        padding: 10px;
+        background-color: white;
+        width: 100%;
+        height: 100%;
+    }
+    #form-add-trans form.form-container div.form-title,
+    #form-add-proj form.form-container div.form-title,
+    #form-add-mem form.form-container div.form-title,
+    #form-add-cont form.form-container div.form-title {
+    width: 100%;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    text-align: left;
+    border-color: gainsboro;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    }
+    #form-add-trans form.form-container div.form-input,
+    #form-add-proj form.form-container div.form-input,
+    #form-add-cont form.form-container div.form-input {
+    height: var(--search-box-height);
+    width: 100%;
+    float:left;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    }
+    #form-add-trans form.form-container .form-input-amount,
+    #form-add-trans form.form-container .form-input-categories,
+    #form-add-trans form.form-container .form-input-date,
+    #form-add-trans form.form-container .form-input-note {
+    font-size: 16px;
+    width: 22%;
+    text-align: left;
+    float: left;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    }
+    #form-add-trans form.form-container .form-input-amount input,
+    #form-add-trans form.form-container .form-input-categories select,
+    #form-add-trans form.form-container .form-input-date input,
+    #form-add-trans form.form-container .form-input-note input {
+    font-size: 16px;
+    text-align: left;
+    border-color: aliceblue;
+    border-width: 3px;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 0;
+    }
+    #form-add-trans form.form-container div.form-buttons,
+    #form-add-cont form.form-container div.form-buttons {
+    overflow: hidden;
+    height: var(--normal-line-height);
+    width: 100%;
+    margin: 0;
+    }
+    #form-add-trans form.form-container .btn ,
+    #form-add-cont form.form-container .btn {
+    margin-top: 10px;
     bottom: 0;
     margin-right: 20px;
     box-shadow: 4px 4px 8px #8888888b;
     opacity: 0.8;
-}
-
-div.form-popup form.form-container .btn.save {
-    background-color: #2DB84C;
-    color: black;
-    font-weight: bold;
+    }
+    form.form-container .btn.save {
+    background-color: limegreen;
+    color: white;
     width: 100px;
-}
-
-div.form-popup form.form-container .btn:hover,
-.btn.save:hover {
+    float: right;
+    margin-left: 10px;
+    opacity: 0.7;
+    }
+    form.form-container .btn.save:hover {
     opacity: 1;
-}
-
-div.form-popup form.form-container .btn.cancel {
+    }
+    form.form-container .btn.cancel  {
     background-color: rgb(227, 223, 223);
-    color: black;
-    font-weight: bold;
+    color: limegreen;
     width: 100px;
-}
-
-/* Box project */
-div.box-project {
+    float: right;
+    margin-left: 25%;
+    opacity: 0.7;
+    }
+    form.form-container .btn.cancel:hover {
+    opacity: 1;
+    }
+    
+    /* Box project */
+    div.box-project {
     width: var(--center-box-size);
     margin: 0 auto;
-    /* margin-top: 15%; */
+    margin-top: 15%;
     border-color: gainsboro;
     border-width: 0 0 2px 0;
     border-style: solid;
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 4px 8px #8888888b;
-}
-
-div.box-project div.project {
+    }
+    div.box-project div.project {
     /* Height fits content */
     display: block;
-    /* overflow: auto; */
-
+    overflow: auto;
+    
     border-color: gainsboro;
     border-width: 10px 0 2px 0;
     border-style: solid;
-}
-
-/* Project Title */
-div.box-project div.project div.project-title {
+    }
+    /* Project Title */
+    div.box-project div.project div.project-title { 
     width: 100%;
     height: 60px;
     display: flex;
@@ -650,81 +654,71 @@ div.box-project div.project div.project-title {
     border-width: 0 0 2px 0;
     border-style: solid;
     font-size: 18px;
-}
-
-div.box-project div.project div.project-title div.project-name {
+    }
+    div.box-project div.project div.project-title div.project-name { 
     float: left;
     width: 50%;
     height: 100%;
-    display: flex;
-}
-
-div.box-project div.project div.project-title div.project-target {
+    display:flex;
+    }
+    div.box-project div.project div.project-title div.project-target { 
     float: right;
     height: 100%;
     width: 50%;
     text-align: right;
-    color: #AC9B03;
+    color:#AC9B03;
     /* margin-right: 20px; */
-}
-
-div.box-project div.project div.project-title div.project-target span.project-target-amount {
+    }
+    
+    div.box-project div.project div.project-title div.project-target span.project-target-amount { 
     text-shadow: 2px 2px #ac9b0392;
     color: rgba(0, 0, 0, 0.6);
-}
-
-/* Project Detail */
-div.box-project div.project div.project-detail {
+    }
+    
+    /* Project Detail */
+    div.box-project div.project div.project-detail {
     background-color: white;
-}
-
-div.box-project div.project div.project-detail div.header {
+    }
+    div.box-project div.project div.project-detail div.header {
     overflow: hidden;
     margin-left: 20px;
     margin-right: 20px;
     line-height: var(--normal-line-height);
     height: var(--normal-line-height);
-}
-
-div.box-project div.project div.project-detail div.header div.current {
+    }
+    div.box-project div.project div.project-detail div.header div.current {
     float: left;
     width: 60%;
     height: var(--normal-line-height);
-}
-
-div.box-project div.project div.project-detail div.current span.current-amount {
+    }
+    div.box-project div.project div.project-detail div.current span.current-amount {
     margin-left: 15px;
     font-weight: bold;
-}
-
-div.box-project div.project div.project-detail div.header div.icon {
+    }
+    div.box-project div.project div.project-detail div.header div.icon {
     float: left;
     width: 10%;
     height: var(--normal-line-height);
     cursor: pointer;
     margin-left: 20px;
-}
-
-div.box-project div.project div.project-detail div.header div.icon img {
+    }
+    div.box-project div.project div.project-detail div.header div.icon img {
     height: var(--icon-size);
-}
-
-div.box-project div.project div.project-detail div.header div.icon img:hover {
+    }
+    div.box-project div.project div.project-detail div.header div.icon img:hover {
     border-color: #0cd0bc79;
     border-width: 5px;
     border-style: solid;
     border-radius: 50%;
-}
-
-div.box-project div.project div.project-detail div.header div.btn {
+    }
+    div.box-project div.project div.project-detail div.header div.btn {
     float: right;
     margin: auto;
     padding: 0;
     width: 25%;
     height: var(--normal-line-height);
-}
-
-div.box-project div.project div.project-detail div.header div.btn button.add-mem {
+    }
+    div.box-project div.project div.project-detail div.header div.btn button.add-mem {
     top: 50%;
     -ms-transform: translateY(50%);
     transform: translateY(50%);
@@ -737,21 +731,19 @@ div.box-project div.project div.project-detail div.header div.btn button.add-mem
     border-color: gainsboro;
     border-width: 0;
     border-radius: 0;
-}
-
-div.box-project div.project div.project-detail div.header div.btn button.add-mem:hover {
+    }
+    div.box-project div.project div.project-detail div.header div.btn button.add-mem:hover {
     background-color: #0cd0bc;
     color: white;
     opacity: 1;
     font-weight: bold;
-}
-
-/* Member List */
-div.box-project div.project div.project-detail div.member-contribution {
+    }
+    
+    /* Member List */
+    div.box-project div.project div.project-detail div.member-contribution {
     margin: 0 20px 20px 20px;
-}
-
-div.box-project div.project div.project-detail div.member-contribution div.contribution-details {
+    }
+    div.box-project div.project div.project-detail div.member-contribution div.contribution-details {
     overflow: hidden;
     height: var(--transaction-height);
     line-height: var(--transaction-height);
@@ -759,166 +751,168 @@ div.box-project div.project div.project-detail div.member-contribution div.contr
     border-width: 0 0 2px 0;
     border-style: solid;
     font-size: 16px;
-}
-
-div.box-project div.project div.project-detail div.member-contribution div.contribution-details p.privilege {
+    }
+    
+    div.box-project div.project div.project-detail div.member-contribution div.contribution-details p.date {
     float: left;
     font-weight: lighter;
     width: 20%;
-}
-
-div.box-project div.project div.project-detail div.member-contribution div.contribution-details p.username {
+    }
+    
+    div.box-project div.project div.project-detail div.member-contribution div.contribution-details p.username {
     float: left;
     width: 20%;
-}
-
-div.box-project div.project div.project-detail div.member-contribution div.contribution-details p.amount {
+    }
+    
+    div.box-project div.project div.project-detail div.member-contribution div.contribution-details p.amount {
     float: right;
     width: 60%;
     text-align: right;
     font-weight: bold;
     font-size: 18px;
-}
-
-/* Popup Add Contribution Form*/
-#form-add-cont {
+    }
+    /* Popup Add Contribution Form*/
+    #form-add-cont {
     display: none;
-    width: var(--center-box-size + 115px);
+    width: var(--center-box-size);
     height: fit-content;
-    padding-bottom: 20px;
     background-color: white;
-}
-
-#form-add-cont div.form-input {
+    text-align: left;
+    }
+    #form-add-cont form.form-container .form-input-amount,
+    #form-add-cont form.form-container .form-input-date {
+    font-size: 16px;
     width: 40%;
-}
-
-#form-add-cont div.form-input p.label {
-    font-weight: bold;
-}
-
-/*Popup Add Mem Form*/
-#form-add-mem {
+    text-align: left;
+    float: left;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    }
+    #form-add-cont form.form-container .form-input-amount p,
+    #form-add-cont form.form-container .form-input-date p {
+    margin-bottom: 10px;
+    }
+    #form-add-cont form.form-container .form-input-amount input,
+    #form-add-cont form.form-container .form-input-date input{
+    font-size: 16px;
+    text-align: left;
+    border-color: aliceblue;
+    border-width: 3px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+    }
+    
+    /*Popup Add Mem Form*/
+    #form-add-mem {
     display: none;
     width: calc(var(--center-box-size) + 115px);
     height: fit-content;
     background-color: white;
     padding: 0 10px 20px 10px;
-}
-
-#form-add-mem div.form-title {
+    }
+    #form-add-mem div.form-title {
     overflow: hidden;
     margin: 0;
     line-height: var(--normal-line-height);
-}
-
-#form-add-mem div.form-title p {
+    text-align: left;
+    }
+    #form-add-mem div.form-title p {
     float: left;
     margin: 0;
-}
-
-#form-add-mem div.form-title div.icon {
+    }
+    #form-add-mem div.form-title div.icon {
     float: right;
     cursor: pointer;
-}
-
-#form-add-mem div.form-title div.icon img {
+    }
+    #form-add-mem div.form-title div.icon img {
     /* Close popup (X) */
     height: calc(0.5*var(--icon-size));
     opacity: 0.5;
-}
-
-#form-add-mem div.form-title div.icon img:hover {
+    }
+    #form-add-mem div.form-title div.icon img:hover {
     opacity: 1;
-}
-
-#form-add-mem div.form-subtitle {
+    }
+    #form-add-mem div.form-subtitle {
     text-align: right;
     color: grey;
     margin-top: 10px;
     padding: 0 20px 0 20px;
-}
-
-#form-add-mem div.form-subtitle p {
+    }
+    #form-add-mem div.form-subtitle p {
     padding: 0;
     margin: 0;
-}
-
-#form-add-mem div.project-members {
+    }
+    #form-add-mem div.project-members {
     margin: 0;
     padding: 0 20px 0 20px;
-}
-
-#form-add-mem div.new-member {
+    text-align: left;
+    }
+    #form-add-mem div.new-member {
     height: var(--normal-line-height);
     line-height: var(--normal-line-height);
     margin: 0;
     padding: 0 20px 0 20px;
-}
-
-#form-add-mem div.project-members div.member-contribution-details {
+    text-align: left;
+    }
+    #form-add-mem div.project-members div.member-contribution-details {
     overflow: hidden;
     height: var(--normal-line-height);
     line-height: var(--normal-line-height);
-}
-
-#form-add-mem div.project-members div.member-contribution-details div.delete,
-#form-add-mem div.new-member div.add {
-    display: flex;
+    }
+    #form-add-mem div.project-members div.member-contribution-details div.delete,
+    #form-add-mem div.new-member div.add {
+    display:flex;
     float: left;
     height: var(--normal-line-height);
     line-height: var(--normal-line-height);
     width: 10%;
     cursor: pointer;
-}
-
-#form-add-mem div.project-members div.member-contribution-details div.delete img,
-#form-add-mem div.new-member div.add img {
+    }
+    #form-add-mem div.project-members div.member-contribution-details div.delete img,
+    #form-add-mem div.new-member div.add img {
     height: 50%;
     top: 50%;
     margin: auto;
     margin-left: 0;
     opacity: 0.5;
-}
-
-#form-add-mem div.project-members div.member-contribution-details div.delete img:hover,
-#form-add-mem div.new-member div.add img:hover {
+    }
+    #form-add-mem div.project-members div.member-contribution-details div.delete img:hover,
+    #form-add-mem div.new-member div.add img:hover {
     opacity: 1;
-}
-
-#form-add-mem div.project-members div.member-contribution-details .username {
+    }
+    #form-add-mem div.project-members div.member-contribution-details .username {
     float: left;
     width: 50%;
-}
-
-#form-add-mem div.new-member .username {
+    }
+    #form-add-mem div.new-member .username {
     height: 50%;
-}
-
-#form-add-mem div.project-members div.member-contribution-details p.amount,
-#form-add-mem div.new-member p.amount {
+    }
+    #form-add-mem div.project-members div.member-contribution-details p.amount,
+    #form-add-mem div.new-member p.amount {
     float: right;
     width: 40%;
     text-align: right;
     font-weight: bold;
     font-size: 18px;
-}
-
-/* Form add new project */
-#form-add-proj {
+    }
+    
+    /* Form add new project */
+    #form-add-proj {
     display: none;
-    width: auto;
-    height: auto;
+    width: calc(1.5*var(--center-box-size));
+    height: fit-content;
     padding-bottom: 20px;
     background-color: white;
-    z-index: 10;
-}
-
-#form-add-proj form.form-container div.form-input {
+    }
+    
+    #form-add-proj form.form-container div.form-input {
     width: 20%;
     margin-right: 20px;
-}
-
-#form-add-proj form.form-container div.form-input.name {
+    text-align: left;
+    }
+    
+    #form-add-proj form.form-container div.form-input.name {
     padding-left: 0;
-}
+    }
